@@ -1,0 +1,13 @@
+@use "../../styles/vars" as *;
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0;
+  h3 {
+    color: $dark_red;
+    font-size: 2rem;
+  }
+}

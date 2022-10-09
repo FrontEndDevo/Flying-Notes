@@ -1,17 +1,23 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Navbar from "./components/NavigationBar/Navbar";
 import Homepage from "./pages/Homepage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Route path="/">
-        <Redirect to="/home" />
-      </Route>
-      <Route path="/home">
-        <Homepage />
-      </Route>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/home" exact>
+          <Homepage />
+        </Route>
+        <Route path="*" exact>
+          <NotFoundPage />
+        </Route>
+      </Switch>
     </div>
   );
 };
