@@ -1,8 +1,9 @@
-@use "../../../styles/vars" as *;
+@use "../../styles/vars" as *;
 
 .navbar {
+  
   color: $light_white;
-  background-color: $light_purple;
+  background-color: $deep_purple;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -16,8 +17,8 @@
   input {
     padding: 0.5rem;
     caret-color: $dark_blue;
-    font-size: 1.2rem;
-    border-radius: $border_radius;
+    font-size: $small_font;
+    border-radius: $small_border_radius;
     border: none;
     width: 25vw;
     &:focus,
@@ -32,13 +33,13 @@
 
     a {
       color: $light_white;
-      border-radius: $border_radius;
+      border-radius: $small_border_radius;
       padding: 0.5rem 2rem;
-      font-size: 1.2rem;
+      font-size: $small_font;
     }
   }
 
   .active {
-    background-color: $dark_orange;
+    background-color: $med_teal;
   }
 }

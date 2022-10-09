@@ -1,0 +1,62 @@
+@use "../../styles/vars" as *;
+.home {
+  background-image: url("../../assets/images/home.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    width: 600px;
+    transform: rotateY(180deg);
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    position: absolute;
+    top: 15%;
+    left: 42%;
+    color: $med_teal;
+  }
+
+  .notes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: absolute;
+    top: 30%;
+    left: 34%;
+    font-size: $small_font;
+    font-style: italic;
+    font-weight: 700;
+    color: $dark_gray;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: absolute;
+    top: 60%;
+    left: 34%;
+    button {
+      padding: 0.5rem 1rem;
+      border: 1px solid $med_teal;
+      font-weight: 700;
+      border-radius: $small_border_radius;
+      background-color: transparent;
+      cursor: pointer;
+      transition: $slow_transition;
+
+      &:hover {
+        color: $light_white;
+        background-color: $med_teal;
+      }
+    }
+  }
+}

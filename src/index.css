@@ -4,15 +4,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Kalam", cursive;
   background-color: #29323c;
+  overflow: hidden;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
+}
+
+img{
+  -webkit-user-drag: none;
 }

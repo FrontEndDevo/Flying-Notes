@@ -1,5 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import Navbar from "./components/Home/NavigationBar/Navbar";
+import Navbar from "./components/NavigationBar/Navbar";
 import Homepage from "./pages/Homepage";
 
 const App = () => {
