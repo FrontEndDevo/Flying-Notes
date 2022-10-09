@@ -1,0 +1,44 @@
+@use "../../../styles/vars" as *;
+
+.navbar {
+  color: $light_white;
+  background-color: $light_purple;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem;
+  font-weight: 700;
+
+  h1 {
+    user-select: none;
+  }
+
+  input {
+    padding: 0.5rem;
+    caret-color: $dark_blue;
+    font-size: 1.2rem;
+    border-radius: $border_radius;
+    border: none;
+    width: 25vw;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+
+    a {
+      color: $light_white;
+      border-radius: $border_radius;
+      padding: 0.5rem 2rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .active {
+    background-color: $dark_orange;
+  }
+}

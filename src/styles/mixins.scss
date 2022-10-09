@@ -1,0 +1,17 @@
+@mixin responsiveNote($device) {
+  @if $device == desktop {
+    @media (min-width: 1200px) and (max-width: 1399px) {
+      @content;
+    }
+  }
+  @if $device == tablet {
+    @media (max-width: 1199px) and (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $device == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+}
