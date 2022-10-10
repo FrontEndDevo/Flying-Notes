@@ -44,7 +44,9 @@
     position: absolute;
     top: 60%;
     left: 34%;
-    button {
+    a {
+      color: black;
+      text-align: center;
       padding: 0.5rem 1rem;
       border: 1px solid $med_teal;
       font-weight: 700;

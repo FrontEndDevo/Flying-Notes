@@ -24,7 +24,7 @@
     span {
       color: $dark_orange;
     }
-    &:hover{
+    &:hover {
       background-color: $dark_gray;
     }
   }
@@ -73,6 +73,7 @@
 
       textarea {
         height: 400px;
+        resize: none;
       }
     }
 
@@ -82,10 +83,10 @@
       cursor: pointer;
       padding: 0.5rem 0;
       font-size: 1.5rem;
-      border-radius:$med_border_radius ;
+      border-radius: $med_border_radius;
       border: 2px solid $dark_blue;
       transition: $fast_transition;
-      &:hover{
+      &:hover {
         background-color: $dark_blue;
       }
     }
