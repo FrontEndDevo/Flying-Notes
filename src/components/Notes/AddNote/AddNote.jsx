@@ -1,37 +1,98 @@
-import { useRef, useState } from "react";
+import { useReducer, useState } from "react";
 import classes from "./AddNote.module.scss";
+
+const initialState = {
+  titleInput: "",
+  contentInput: "",
+  isTitleEmpty: false,
+  isContentEmpty: false,
+};
+
+// Note inputs reducer function.
+const noteReducer = (state, action) => {
+  switch (action.type) {
+    case "TITLE":
+      return {
+        ...state,
+        titleInput: action.value,
+      };
+
+    case "TITLE_EMPTY":
+      return {
+        ...state,
+        isTitleEmpty: action.value,
+      };
+
+    case "CONTENT":
+      return {
+        ...state,
+        contentInput: action.value,
+      };
+
+    case "CONTENT_EMPTY":
+      return {
+        ...state,
+        isContentEmpty: action.value,
+      };
+
+    default:
+      return state;
+  }
+};
 
 const AddNote = () => {
   // This state to display the form.
   const [isFormShown, setIsFormShown] = useState(false);
 
   // Are inputs empty?
-  const [isTitleEmpty, setIsTitleEmpty] = useState(false);
-  const [isContentEmpty, setIsContentEmpty] = useState(false);
+  const [notes, dispatch] = useReducer(noteReducer, initialState);
 
-  // These refs for our note inputs (title || content) in JSX.
-  const titleInputRef = useRef();
-  const contentInputRef = useRef();
+  // Set reducer values:
+  // const titleValue = notes.titleInput;
+  // const contentValue = notes.contentInput;
+  // const isTitleEmpty = notes.isTitleEmpty;
+  // const isContentEmpty = notes.isContentEmpty;
 
   // Show form or not show form.
   const showFormHandler = () => {
     setIsFormShown((prevState) => !prevState);
   };
 
+  // Input values
+  const changeNoteTitleHandler = (event) => {
+    dispatch({ type: "TITLE", value: event.target.value });
+    dispatch({ type: "TITLE_EMPTY", value: false });
+  };
+
+  const changeNoteContentHandler = (event) => {
+    dispatch({ type: "CONTENT", value: event.target.value });
+    dispatch({ type: "CONTENT_EMPTY", value: false });
+  };
+
   // FORM SUBMMITION
   const submitFormHandler = (event) => {
     event.preventDefault();
-    // Check if inputs are empty to set the states.
-    if (titleInputRef.current.value === "") setIsTitleEmpty(true);
-    if (contentInputRef.current.value === "") setIsContentEmpty(true);
+    if (notes.titleInput === "") {
+      dispatch({ type: "TITLE_EMPTY", value: true });
+      return;
+    }
+    if (notes.contentInput === "") {
+      dispatch({ type: "CONTENT_EMPTY", value: true });
+      return;
+    }
 
-    // Check if the inputs are empty or not.
-    if (!isTitleEmpty && !isContentEmpty) {
-      console.log(titleInputRef.current.value);
-      console.log(contentInputRef.current.value);
+    // Main check to submit the form
+    if (!notes.isTitleEmpty && !notes.isContentEmpty) {
+      // Set values to empty again.
+      dispatch({ type: "TITLE", value: "" });
+      dispatch({ type: "CONTENT", value: "" });
+
+      // Add values to redux store:
+      console.log(notes.titleInput);
+      console.log(notes.contentInput);
     }
   };
-
+  console.log("Hello");
   return (
     <div className={classes["add-new-note"]}>
       <h2 onClick={showFormHandler}>
@@ -42,23 +103,25 @@ const AddNote = () => {
           <div className={classes.note}>
             <label htmlFor="note-title">Note Title</label>
             <input
+              value={notes.titleInput}
               type="text"
               name="title"
               id="note-title"
               placeholder="Enter the note title"
-              ref={titleInputRef}
+              onChange={changeNoteTitleHandler}
             />
-            {isTitleEmpty && <p>The title can't be empty!</p>}
+            {notes.isTitleEmpty && <p>Please enter the note title!</p>}
           </div>
           <div className={classes.note}>
             <label htmlFor="note-content">The Note</label>
             <textarea
+              value={notes.contentInput}
               name="content"
               id="note-content"
               placeholder="Enter the note"
-              ref={contentInputRef}
+              onChange={changeNoteContentHandler}
             />
-            {isContentEmpty && <p>The note can't be empty!</p>}
+            {notes.isContentEmpty && <p>Please enter the note content!</p>}
           </div>
           <button>Add The Note</button>
         </form>
