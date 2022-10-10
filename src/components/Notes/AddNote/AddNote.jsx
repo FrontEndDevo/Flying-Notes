@@ -1,4 +1,6 @@
 import { useReducer, useState } from "react";
+import { useDispatch } from "react-redux";
+import { notesActions } from "../../../store/note-slice";
 import classes from "./AddNote.module.scss";
 
 const initialState = {
@@ -41,6 +43,8 @@ const noteReducer = (state, action) => {
 };
 
 const AddNote = () => {
+  const actionsDispatch = useDispatch();
+
   // This state to display the form.
   const [isFormShown, setIsFormShown] = useState(false);
 
@@ -57,7 +61,6 @@ const AddNote = () => {
     dispatch({ type: "TITLE", value: event.target.value });
     dispatch({ type: "TITLE_EMPTY", value: false });
   };
-
   const changeNoteContentHandler = (event) => {
     dispatch({ type: "CONTENT", value: event.target.value });
     dispatch({ type: "CONTENT_EMPTY", value: false });
@@ -66,11 +69,11 @@ const AddNote = () => {
   // FORM SUBMMITION
   const submitFormHandler = (event) => {
     event.preventDefault();
-    if (notes.titleInput === "") {
+    if (notes.titleInput.trim() === "") {
       dispatch({ type: "TITLE_EMPTY", value: true });
       return;
     }
-    if (notes.contentInput === "") {
+    if (notes.contentInput.trim() === "") {
       dispatch({ type: "CONTENT_EMPTY", value: true });
       return;
     }
@@ -82,11 +85,14 @@ const AddNote = () => {
       dispatch({ type: "CONTENT", value: "" });
 
       // Add values to redux store:
-      console.log(notes.titleInput);
-      console.log(notes.contentInput);
+      const note = {
+        id: notes.titleInput.trim(),
+        title: notes.titleInput.trim(),
+        content: notes.contentInput.trim(),
+      };
+      actionsDispatch(notesActions.addNote(note));
     }
   };
-  console.log("Hello");
   return (
     <div className={classes["add-new-note"]}>
       <h2 onClick={showFormHandler}>
