@@ -1,0 +1,33 @@
+@use "../../../styles/vars" as *;
+
+.single-note {
+  max-width: 100%;
+  background-color: $light_white;
+  border-radius: $med_border_radius;
+  font-size: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  .note-content {
+    text-align: center;
+    padding: 1rem;
+
+    h3 {
+      text-decoration: wavy underline $dark_blue;
+    }
+
+    p {
+      text-align: start;
+      text-align: justify;
+      margin: 1rem 0;
+    }
+  }
+
+  .note-tools {
+    text-align: center;
+    border-radius: $med_border_radius;
+    border-top-left-radius: $small_border_radius;
+    border-top-right-radius: $small_border_radius;
+    padding: 0.2rem 1rem;
+    background-color: $dark_gray;
+    color: $light_white;
+  }
+}
