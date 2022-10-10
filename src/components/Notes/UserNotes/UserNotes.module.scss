@@ -1,0 +1,23 @@
+@use "../../../styles/vars" as *;
+
+.user-notes {
+  height: 100vh;
+  background-color: $med_white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  .no-notes {
+    font-size: 3rem;
+    margin-top: 2rem;
+    a {
+      color: $med_teal;
+      text-decoration: underline;
+    }
+  }
+
+  .all-notes {
+    margin-top: 2rem;
+  }
+}

@@ -3,6 +3,7 @@ import Navbar from "./components/NavigationBar/Navbar";
 import Homepage from "./pages/Homepage";
 import NewNote from "./pages/NewNote";
 import NotFoundPage from "./pages/NotFoundPage";
+import AllNotes from "./pages/AllNotes";
 
 const App = () => {
   return (
@@ -12,13 +13,16 @@ const App = () => {
         <Route path="/" exact>
           <Redirect to="/home" />
         </Route>
-        <Route path="/home" exact>
+        <Route path="/home">
           <Homepage />
         </Route>
-        <Route path="/add-new-note" exact>
+        <Route path="/my-notes" exact>
+          <AllNotes />
+        </Route>
+        <Route path="/add-new-note">
           <NewNote />
         </Route>
-        <Route path="*" exact>
+        <Route path="*">
           <NotFoundPage />
         </Route>
       </Switch>
