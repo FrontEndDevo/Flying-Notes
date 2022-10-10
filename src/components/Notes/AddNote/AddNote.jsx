@@ -93,6 +93,7 @@ const AddNote = () => {
       actionsDispatch(notesActions.addNote(note));
     }
   };
+
   return (
     <div className={classes["add-new-note"]}>
       <h2 onClick={showFormHandler}>

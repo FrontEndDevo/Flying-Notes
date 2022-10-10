@@ -13,7 +13,7 @@ const NoteSlice = createSlice({
         title: action.payload.title,
         content: action.payload.content,
       };
-      state.notes.concat(newNote);
+      state.notes.push(newNote);
       state.totalNotes++;
     },
   },
