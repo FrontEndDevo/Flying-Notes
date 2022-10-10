@@ -20,7 +20,17 @@ const UserNotes = () => {
         </p>
       )}
       {totalUserNotes !== 0 && (
-        <ul className={classes["all-notes"]}>{existingNotes}</ul>
+        <div className={classes["all-notes"]}>
+          <h4>
+            Your Notes are{" "}
+            <span className={classes.signs}>
+              &lt;
+              <span className={classes.number}> {totalUserNotes} </span>
+              &gt;
+            </span>
+          </h4>
+          <ul>{existingNotes}</ul>
+        </div>
       )}
     </div>
   );
