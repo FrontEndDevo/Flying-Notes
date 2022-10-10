@@ -22,6 +22,7 @@
     word-spacing: -10px;
     cursor: pointer;
     border: 2px solid $med_teal;
+    animation: word-bright 20s linear infinite;
     span {
       color: $dark_orange;
     }
@@ -77,7 +78,7 @@
         resize: none;
       }
 
-      p {
+      .error{
         margin-top: 0.5rem;
         font-size: 1.3rem;
         color: $dark_red;
@@ -97,5 +98,22 @@
         background-color: $dark_blue;
       }
     }
+
+    .success {
+      color: $light_green;
+      text-align: center;
+      margin-top: 0.5rem;
+        font-size: 1.3rem;
+    } 
+  }
+}
+
+@keyframes word-bright {
+  0%,100%{
+    filter: brightness(80%);
+  }
+  
+  50%,75%{
+    filter: brightness(200%);
   }
 }

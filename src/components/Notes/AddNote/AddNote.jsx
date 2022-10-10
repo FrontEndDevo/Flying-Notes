@@ -47,6 +47,8 @@ const AddNote = () => {
 
   // This state to display the form.
   const [isFormShown, setIsFormShown] = useState(false);
+  // This state to know if the note is added successfully or not.
+  const [isNoteAdded, setIsNoteAdded] = useState(false);
 
   // useReducer to handle input values.
   const [notes, dispatch] = useReducer(noteReducer, initialState);
@@ -58,10 +60,12 @@ const AddNote = () => {
 
   // Input values
   const changeNoteTitleHandler = (event) => {
+    setIsNoteAdded(false);
     dispatch({ type: "TITLE", value: event.target.value });
     dispatch({ type: "TITLE_EMPTY", value: false });
   };
   const changeNoteContentHandler = (event) => {
+    setIsNoteAdded(false);
     dispatch({ type: "CONTENT", value: event.target.value });
     dispatch({ type: "CONTENT_EMPTY", value: false });
   };
@@ -69,6 +73,7 @@ const AddNote = () => {
   // FORM SUBMMITION
   const submitFormHandler = (event) => {
     event.preventDefault();
+
     if (notes.titleInput.trim() === "") {
       dispatch({ type: "TITLE_EMPTY", value: true });
       return;
@@ -84,6 +89,8 @@ const AddNote = () => {
       dispatch({ type: "TITLE", value: "" });
       dispatch({ type: "CONTENT", value: "" });
 
+      setIsNoteAdded(true);
+
       // Add values to redux store:
       const note = {
         id: notes.titleInput.trim(),
@@ -93,6 +100,19 @@ const AddNote = () => {
       actionsDispatch(notesActions.addNote(note));
     }
   };
+
+  // Handle the messages which would appear under certain conditions.
+  const titleError = notes.isTitleEmpty && (
+    <p className={classes.error}>Please enter the note title!</p>
+  );
+
+  const noteError = notes.isContentEmpty && (
+    <p className={classes.error}>Please enter the note content!</p>
+  );
+
+  const success = isNoteAdded && (
+    <p className={classes.success}>Your Note has been added successfully.</p>
+  );
 
   return (
     <div className={classes["add-new-note"]}>
@@ -111,7 +131,7 @@ const AddNote = () => {
               placeholder="Enter the note title"
               onChange={changeNoteTitleHandler}
             />
-            {notes.isTitleEmpty && <p>Please enter the note title!</p>}
+            {titleError}
           </div>
           <div className={classes.note}>
             <label htmlFor="note-content">The Note</label>
@@ -122,9 +142,10 @@ const AddNote = () => {
               placeholder="Enter the note"
               onChange={changeNoteContentHandler}
             />
-            {notes.isContentEmpty && <p>Please enter the note content!</p>}
+            {noteError}
           </div>
           <button>Add The Note</button>
+          {success}
         </form>
       )}
     </div>
