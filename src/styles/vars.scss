@@ -1,17 +1,21 @@
 // Colors
 $dark_blue: #0077c8;
-$deep_purple: #5E35B1;
+$deep_purple: #5e35b1;
 $light_white: #f2f6fa;
 $dark_orange: #f38020;
-$med_teal:#00796B;
-$dark_gray:#424242;
-$dark_red:#be0027;
+$med_teal: #00796b;
+$light_teal: #26a69a;
+$dark_gray: #424242;
+$dark_red: #be0027;
 
 // Borders
-$small_border_radius:5px;
+$small_border_radius: 5px;
+$med_border_radius: $small_border_radius * 2;
+$large_border_radius: $small_border_radius * 4;
 
 // Transitions
-$slow_transition:0.2s;
+$slow_transition: 0.2s;
+$fast_transition: 0.5s;
 
 // Fonts
-$small_font:1.2rem;
+$small_font: 1.2rem;

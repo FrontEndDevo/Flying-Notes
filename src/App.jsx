@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import Navbar from "./components/NavigationBar/Navbar";
 import Homepage from "./pages/Homepage";
+import NewNote from "./pages/NewNote";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
@@ -13,6 +14,9 @@ const App = () => {
         </Route>
         <Route path="/home" exact>
           <Homepage />
+        </Route>
+        <Route path="/add-new-note" exact>
+          <NewNote />
         </Route>
         <Route path="*" exact>
           <NotFoundPage />

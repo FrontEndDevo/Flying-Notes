@@ -1,0 +1,93 @@
+@use "../../../styles/vars" as *;
+
+.add-new-note {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+
+  h2 {
+    color: $light_teal;
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: italic;
+    padding: 0 2rem;
+    margin: 1rem 0;
+    transition: $slow_transition;
+    border-radius: $med_border_radius;
+    word-spacing: -10px;
+    cursor: pointer;
+    border: 2px solid $med_teal;
+    span {
+      color: $dark_orange;
+    }
+    &:hover{
+      background-color: $dark_gray;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50vw;
+    border: 5px solid $dark_blue;
+    padding: 1rem 2rem 2rem;
+    border-radius: $large_border_radius;
+
+    .note {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      label {
+        color: $dark_blue;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      input,
+      textarea {
+        font-size: 1.5rem;
+        border-radius: $small_border_radius;
+        padding: 0.5rem 1rem;
+        caret-color: $dark_blue;
+        transition: $slow_transition;
+        background-color: transparent;
+        color: $light_white;
+        border: 2px solid $med_teal;
+
+        &:focus,
+        &:active {
+          outline: none;
+          box-shadow: $med_teal 0px 4px 4px, $med_teal 0px 4px 4px;
+        }
+      }
+
+      input {
+        height: 50px;
+      }
+
+      textarea {
+        height: 400px;
+      }
+    }
+
+    button {
+      color: $light_white;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      font-size: 1.5rem;
+      border-radius:$med_border_radius ;
+      border: 2px solid $dark_blue;
+      transition: $fast_transition;
+      &:hover{
+        background-color: $dark_blue;
+      }
+    }
+  }
+}
