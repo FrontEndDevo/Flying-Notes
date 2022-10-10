@@ -44,14 +44,8 @@ const AddNote = () => {
   // This state to display the form.
   const [isFormShown, setIsFormShown] = useState(false);
 
-  // Are inputs empty?
+  // useReducer to handle input values.
   const [notes, dispatch] = useReducer(noteReducer, initialState);
-
-  // Set reducer values:
-  // const titleValue = notes.titleInput;
-  // const contentValue = notes.contentInput;
-  // const isTitleEmpty = notes.isTitleEmpty;
-  // const isContentEmpty = notes.isContentEmpty;
 
   // Show form or not show form.
   const showFormHandler = () => {
