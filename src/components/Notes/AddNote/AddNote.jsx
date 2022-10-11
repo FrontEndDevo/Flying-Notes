@@ -91,7 +91,6 @@ const AddNote = () => {
 
       setIsNoteAdded(true);
 
-      // Add values as an object to localStorage.
       
       // Add values to redux store:
       const note = {

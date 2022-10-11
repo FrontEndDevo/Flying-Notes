@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <h1>My Notes</h1>
-      <input type="search" placeholder="Search for a note" />
+
       <ul>
         <li>
           <NavLink activeClassName={styles.active} to="/home">
