@@ -21,14 +21,17 @@ const UserNotes = () => {
       )}
       {totalUserNotes !== 0 && (
         <div className={classes["all-notes"]}>
-          <h4>
-            Your Notes are{" "}
-            <span className={classes.signs}>
-              &lt;
-              <span className={classes.number}> {totalUserNotes} </span>
-              &gt;
-            </span>
-          </h4>
+          <div className={classes["total-button-box"]}>
+            <h4>
+              Your Notes are{" "}
+              <span className={classes.signs}>
+                &lt;
+                <span className={classes.number}> {totalUserNotes} </span>
+                &gt;
+              </span>
+            </h4>
+            <Link to="/add-new-note">Add another one?</Link>
+          </div>
           <ul>{existingNotes}</ul>
         </div>
       )}

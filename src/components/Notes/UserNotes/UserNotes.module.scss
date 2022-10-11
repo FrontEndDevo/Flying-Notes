@@ -26,15 +26,27 @@
       font-style: italic;
       font-weight: 400;
       user-select: none;
-      .signs{
+      .signs {
         color: $dark_blue;
         font-size: 1rem;
       }
-      
+
       .number {
         color: $dark_orange;
-      font-size: 2rem;
+        font-size: 2rem;
         font-weight: 700;
+      }
+    }
+
+    .total-button-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        font-size: 1.5rem;
+        color: $med_teal;
+        text-decoration: underline;
       }
     }
 
