@@ -1,5 +1,17 @@
+import { useState } from "react";
 import classes from "./SingleNote.module.scss";
 const SingleNote = (props) => {
+  // A state to handle (confirm message) when delete a note.
+  const [isHover, setIsHover] = useState(false);
+
+  const enableHoverBtnHandler = () => {
+    setIsHover(true);
+  };
+
+  const disableHoverBtnHandler = () => {
+    setIsHover(false);
+  };
+
   return (
     <li className={classes["single-note"]}>
       <div className={classes["note-content"]}>
@@ -8,7 +20,15 @@ const SingleNote = (props) => {
       </div>
       <div className={classes["note-tools"]}>
         <div className={classes.tools}>note tools</div>
-          <button>Delete Note</button>
+        <div className={classes.delete}>
+          {isHover && <p>Double click to confirm deletion</p>}
+          <button
+            onMouseEnter={enableHoverBtnHandler}
+            onMouseLeave={disableHoverBtnHandler}
+          >
+            Delete Note
+          </button>
+        </div>
       </div>
     </li>
   );

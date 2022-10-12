@@ -35,19 +35,43 @@
     .tools {
     }
 
-    button {
-      margin: 0.5rem 0;
-      padding: 0.3rem 1rem;
-      font-size: $small_font;
-      border: 2px solid $dark_red;
-      background-color: transparent;
-      border-radius: $small_border_radius;
-      cursor: pointer;
-      transition: $fast_transition;
-      &:hover {
+    .delete {
+      position: relative;
+
+      button {
         color: $light_white;
-        background-color: $dark_red;
+        margin: 0.5rem 0;
+        padding: 0.3rem 1rem;
+        font-size: $small_font;
+        border: 2px solid $dark_red;
+        background-color: transparent;
+        border-radius: $small_border_radius;
+        cursor: pointer;
+        transition: $fast_transition;
+
+        &:hover {
+          background-color: $dark_red;
+        }
+      }
+
+      p {
+        width: 200%;
+        position: absolute;
+        top: -2rem;
+        right: -3rem;
+        font-size: 1rem;
+        color: $dark_blue;
+        animation: show-p $fast_transition linear;
       }
     }
+  }
+}
+
+@keyframes show-p {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
