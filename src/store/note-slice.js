@@ -25,17 +25,18 @@ const NoteSlice = createSlice({
       state.notes.push(newNote);
       state.totalNotes++;
     },
-  },
+    
+    // Delete certain note
+    deleteNote(state, action) {
+      const deletedNoteId = action.payload;
+      const newNotesArray = state.notes.filter(
+        (note) => note.id !== deletedNoteId
+      );
 
-  // Delete certain note
-  deleteNote(state, action) {
-    const deletedNoteId = action.payload;
-    const newNotesArray = state.notes.filter(
-      (note) => note.id !== deletedNoteId
-    );
-
-    state.notes = newNotesArray;
-    state.totalNotes--;
+      state.notes = [];
+      state.notes = state.notes.concat(newNotesArray);
+      state.totalNotes--;
+    },
   },
 });
 
