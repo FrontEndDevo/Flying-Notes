@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SingleNote from "../SingleNote/SingleNote";
 import classes from "./UserNotes.module.scss";
 
 const UserNotes = () => {
+  const [notes, setNotes] = useState([]);
+  const [error, setError] = useState(null);
   const [filteredNotes, setFilteredNotes] = useState([]);
 
   const userNotes = useSelector((state) => state.note.notes);
@@ -20,8 +22,33 @@ const UserNotes = () => {
     setFilteredNotes(searchedNote);
   };
 
-  // Fetching user notes from database:
-  
+  // Fetching user notes from database(firebase):
+  useEffect(() => {
+    const fetchUserNotes = async () => {
+      const response = await fetch(
+        `https://notes-90ac8-default-rtdb.firebaseio.com/notes.json`
+      );
+
+      // Check for errors:
+      if (!response.ok)
+        throw new Error("Fetch notes from database was failed!");
+
+      const fetchedNotes = await response.json();
+
+      // Loop on fetchedNotes to extract all note objects into a new array:
+      const notesArray = [];
+      for (const note in fetchedNotes) {
+        notesArray.push(fetchedNotes[note]);
+      }
+
+      setNotes(notesArray);
+    };
+
+    fetchUserNotes().catch((error) => {
+      setError(error);
+    });
+  }, []);
+
   // Mapping on userNotes.
   const existingNotes = userNotes.map((note) => (
     <SingleNote key={note.title} title={note.title} content={note.content} />
