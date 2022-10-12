@@ -22,12 +22,32 @@
   }
 
   .note-tools {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: $med_border_radius;
     border-top-left-radius: $small_border_radius;
     border-top-right-radius: $small_border_radius;
     padding: 0.2rem 1rem;
     background-color: $dark_gray;
     color: $light_white;
+
+    .tools {
+    }
+
+    button {
+      margin: 0.5rem 0;
+      padding: 0.3rem 1rem;
+      font-size: $small_font;
+      border: 2px solid $dark_red;
+      background-color: transparent;
+      border-radius: $small_border_radius;
+      cursor: pointer;
+      transition: $fast_transition;
+      &:hover {
+        color: $light_white;
+        background-color: $dark_red;
+      }
+    }
   }
 }

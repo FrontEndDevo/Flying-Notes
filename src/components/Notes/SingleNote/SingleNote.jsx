@@ -6,7 +6,10 @@ const SingleNote = (props) => {
         <h3>{props.title}</h3>
         <p>{props.content}</p>
       </div>
-      <div className={classes["note-tools"]}>note tools</div>
+      <div className={classes["note-tools"]}>
+        <div className={classes.tools}>note tools</div>
+          <button>Delete Note</button>
+      </div>
     </li>
   );
 };

@@ -5,11 +5,11 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-   .error{
-        margin-top: 0.5rem;
-        font-size: 1.3rem;
-        color: $dark_red;
-      }
+  .error {
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    color: $dark_red;
+  }
 
   .no-notes {
     font-size: 3rem;
@@ -27,18 +27,18 @@
     flex-direction: column;
 
     input {
-    padding: 0.5rem;
-    caret-color: $dark_blue;
-    font-size: $small_font;
-    border-radius: $small_border_radius;
-    border: none;
-    margin: 0 auto 2rem;
-    width: 50%;
-    &:focus,
-    &:active {
-      outline: none;
+      padding: 0.5rem;
+      caret-color: $dark_blue;
+      font-size: $small_font;
+      border-radius: $small_border_radius;
+      border: none;
+      margin: 0 auto 2rem;
+      width: 50%;
+      &:focus,
+      &:active {
+        outline: none;
+      }
     }
-  }
 
     h4 {
       font-size: 1.5rem;
