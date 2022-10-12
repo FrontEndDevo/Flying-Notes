@@ -1,6 +1,4 @@
 import { useReducer, useState } from "react";
-import { useDispatch } from "react-redux";
-import { notesActions } from "../../../store/note-slice";
 import classes from "./AddNote.module.scss";
 
 const initialState = {
@@ -43,12 +41,12 @@ const noteReducer = (state, action) => {
 };
 
 const AddNote = () => {
-  const actionsDispatch = useDispatch();
-
   // This state to display the form.
   const [isFormShown, setIsFormShown] = useState(false);
   // This state to know if the note is added successfully or not.
   const [isNoteAdded, setIsNoteAdded] = useState(false);
+  // Handling send notes to database errors.
+  const [error, setError] = useState(null);
 
   // useReducer to handle input values.
   const [notes, dispatch] = useReducer(noteReducer, initialState);
@@ -91,14 +89,17 @@ const AddNote = () => {
 
       setIsNoteAdded(true);
 
-      
-      // Add values to redux store:
+      // Prepare an object holds the note values.
       const note = {
         id: notes.titleInput.trim(),
         title: notes.titleInput.trim(),
         content: notes.contentInput.trim(),
       };
-      actionsDispatch(notesActions.addNote(note));
+
+      // Store note in database(Firebase):
+      sendNotesToFirebase(note).catch((error) => {
+        setError(error);
+      });
     }
   };
 
@@ -111,9 +112,12 @@ const AddNote = () => {
     <p className={classes.error}>Please enter the note content!</p>
   );
 
-  const success = isNoteAdded && (
+  let finalMessage = isNoteAdded && !error && (
     <p className={classes.success}>Your Note has been added successfully.</p>
   );
+
+  if (error && !isNoteAdded)
+    finalMessage = <p className={classes.error}>{error}</p>;
 
   return (
     <div className={classes["add-new-note"]}>
@@ -146,7 +150,7 @@ const AddNote = () => {
             {noteError}
           </div>
           <button>Add The Note</button>
-          {success}
+          {finalMessage}
         </form>
       )}
     </div>
@@ -154,3 +158,20 @@ const AddNote = () => {
 };
 
 export default AddNote;
+
+// An arrow function to send the written note by user to database (firebase).
+const sendNotesToFirebase = async (dataObj) => {
+  const response = await fetch(
+    `https://notes-90ac8-default-rtdb.firebaseio.com/notes.json`,
+    {
+      method: "POST",
+      body: JSON.stringify(dataObj),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error(`Saving note was failed!`);
+  }
+};

@@ -21,7 +21,7 @@ const UserNotes = () => {
   };
 
   // Fetching user notes from database:
-
+  
   // Mapping on userNotes.
   const existingNotes = userNotes.map((note) => (
     <SingleNote key={note.title} title={note.title} content={note.content} />
@@ -59,7 +59,6 @@ const UserNotes = () => {
           <ul>
             {filteredNotes.length > 0 && returnedNotes}
             {filteredNotes.length === 0 && existingNotes}
-            {/* {existingNotes} */}
           </ul>
         </div>
       )}
