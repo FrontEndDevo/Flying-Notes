@@ -1,9 +1,9 @@
-export const sendNotesToFirebase = async (dataObj, selectedMethod) => {
+export const sendNotesToFirebase = async (dataArr, selectedMethod) => {
   const response = await fetch(
     `https://notes-90ac8-default-rtdb.firebaseio.com/notes.json`,
     {
-      method: selectedMethod,
-      body: JSON.stringify(dataObj),
+      method: selectedMethod, // only POST or PUT in this app
+      body: JSON.stringify(dataArr),
       headers: {
         "Content-Type": "application/json",
       },

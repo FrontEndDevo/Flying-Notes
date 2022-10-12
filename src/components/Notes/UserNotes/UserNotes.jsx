@@ -57,6 +57,7 @@ const UserNotes = () => {
     const theRestOfTheNotes = userNotes.filter(
       (deletedNote) => deletedNote.title !== id
     );
+
     /* Second step:delete from database by sending a new notes array 
     but with method:'PUT',
     to replace the current notes array in database by the new one here */
