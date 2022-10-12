@@ -7,6 +7,12 @@
   gap: 1rem;
   align-items: center;
 
+   .error{
+        margin-top: 0.5rem;
+        font-size: 1.3rem;
+        color: $dark_red;
+      }
+
   .no-notes {
     font-size: 3rem;
     margin-top: 2rem;
