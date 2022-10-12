@@ -42,6 +42,12 @@ const NoteSlice = createSlice({
   name: "new-note",
   initialState,
   reducers: {
+    // Add(store) notes array which was fetched from database.
+    addNotesArr(state, action) {
+      state.notes = [];
+      state.notes = state.notes.concat(action.payload);
+      state.totalNotes = action.payload.length;
+    },
     // Add new note
     addNote(state, action) {
       const newNote = {

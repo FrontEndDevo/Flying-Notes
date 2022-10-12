@@ -5,7 +5,6 @@ import SingleNote from "../SingleNote/SingleNote";
 import classes from "./UserNotes.module.scss";
 
 const UserNotes = () => {
-  const [notes, setNotes] = useState([]);
   const [error, setError] = useState(null);
   const [filteredNotes, setFilteredNotes] = useState([]);
 
@@ -41,7 +40,8 @@ const UserNotes = () => {
         notesArray.push(fetchedNotes[note]);
       }
 
-      setNotes(notesArray);
+      // Store notesArray in Redux store:
+      
     };
 
     fetchUserNotes().catch((error) => {
