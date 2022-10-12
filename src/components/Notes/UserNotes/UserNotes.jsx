@@ -12,7 +12,6 @@ const UserNotes = () => {
   const [isNoteDeleted, setIsNoteDeleted] = useState(false);
 
   const dispatch = useDispatch();
-
   // Fetching user notes from database(firebase):
   useEffect(() => {
     const fetchUserNotes = async () => {
@@ -31,7 +30,6 @@ const UserNotes = () => {
       for (const note in fetchedNotes) {
         notesArray.push(fetchedNotes[note]);
       }
-
       // Store notesArray in Redux store:
       dispatch(notesActions.addNotesArr(notesArray));
     };
@@ -39,7 +37,7 @@ const UserNotes = () => {
     fetchUserNotes().catch((error) => {
       setError(error);
     });
-  }, [dispatch]);
+  }, [isNoteDeleted, dispatch]);
 
   const userNotes = useSelector((state) => state.note.notes);
   const totalUserNotes = useSelector((state) => state.note.totalNotes);
@@ -64,6 +62,9 @@ const UserNotes = () => {
     to replace the current notes array in database by the new one here */
     sendNotesToFirebase(theRestOfTheNotes, "PUT");
     setIsNoteDeleted(true);
+    setTimeout(() => {
+      setIsNoteDeleted(false);
+    }, 2000);
   };
 
   // Mapping on userNotes.
@@ -85,19 +86,29 @@ const UserNotes = () => {
     />
   ));
 
+  // Handling messages in JSX to keep JSX lean.
+  const noNotes = totalUserNotes === 0 && (
+    <p className={classes["no-notes"]}>
+      You have no notes, <Link to="/add-new-note">Add one?</Link>
+    </p>
+  );
+
+  const fetchNotesFailed = error && <p className={classes.error}>{error}</p>;
+
+  const noteWasDeleted = isNoteDeleted && (
+    <p className={classes["deleted-note"]}>The note was deleted.</p>
+  );
+
+  const renderedNotes =
+    filteredNotes.length > 0 ? returnedNotes : existingNotes;
+
   return (
     <div className={classes["user-notes"]}>
-      {totalUserNotes === 0 && (
-        <p className={classes["no-notes"]}>
-          You have no notes, <Link to="/add-new-note">Add one?</Link>
-        </p>
-      )}
-      {error && <p className={classes.error}>{error}</p>}
+      {noNotes}
+      {fetchNotesFailed}
       {totalUserNotes !== 0 && !error && (
         <div className={classes["all-notes"]}>
-          {isNoteDeleted && (
-            <p className={classes["deleted-note"]}>The note was deleted.</p>
-          )}
+          {noteWasDeleted}
           <input
             type="search"
             placeholder="Search by the title"
@@ -114,10 +125,7 @@ const UserNotes = () => {
             </h4>
             <Link to="/add-new-note">Add another one?</Link>
           </div>
-          <ul>
-            {filteredNotes.length > 0 && returnedNotes}
-            {filteredNotes.length === 0 && existingNotes}
-          </ul>
+          <ul>{renderedNotes}</ul>
         </div>
       )}
     </div>
