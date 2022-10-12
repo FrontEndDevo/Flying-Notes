@@ -9,6 +9,7 @@ import { sendNotesToFirebase } from "../../../helpers/AllHelpers";
 const UserNotes = () => {
   const [error, setError] = useState(null);
   const [filteredNotes, setFilteredNotes] = useState([]);
+  const [isNoteDeleted, setIsNoteDeleted] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -62,6 +63,7 @@ const UserNotes = () => {
     but with method:'PUT',
     to replace the current notes array in database by the new one here */
     sendNotesToFirebase(theRestOfTheNotes, "PUT");
+    setIsNoteDeleted(true);
   };
 
   // Mapping on userNotes.
@@ -93,6 +95,9 @@ const UserNotes = () => {
       {error && <p className={classes.error}>{error}</p>}
       {totalUserNotes !== 0 && !error && (
         <div className={classes["all-notes"]}>
+          {isNoteDeleted && (
+            <p className={classes["deleted-note"]}>The note was deleted.</p>
+          )}
           <input
             type="search"
             placeholder="Search by the title"
