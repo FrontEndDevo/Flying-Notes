@@ -12,6 +12,11 @@ const SingleNote = (props) => {
     setIsHover(false);
   };
 
+  // Delete the selected note:
+  const deleteNoteHandler = () => {
+    
+  };
+
   return (
     <li className={classes["single-note"]}>
       <div className={classes["note-content"]}>
@@ -25,6 +30,7 @@ const SingleNote = (props) => {
           <button
             onMouseEnter={enableHoverBtnHandler}
             onMouseLeave={disableHoverBtnHandler}
+            onDoubleClick={deleteNoteHandler}
           >
             Delete Note
           </button>

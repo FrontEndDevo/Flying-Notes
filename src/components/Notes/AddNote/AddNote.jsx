@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import { sendNotesToFirebase } from "../../../helpers/AllHelpers";
 import classes from "./AddNote.module.scss";
 
 const initialState = {
@@ -158,20 +159,3 @@ const AddNote = () => {
 };
 
 export default AddNote;
-
-// An arrow function to send the written note by user to database (firebase).
-const sendNotesToFirebase = async (dataObj) => {
-  const response = await fetch(
-    `https://notes-90ac8-default-rtdb.firebaseio.com/notes.json`,
-    {
-      method: "POST",
-      body: JSON.stringify(dataObj),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  if (!response.ok) {
-    throw new Error(`Saving note was failed!`);
-  }
-};
