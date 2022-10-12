@@ -98,7 +98,7 @@ const AddNote = () => {
       };
 
       // Store note in database(Firebase):
-      sendNotesToFirebase(note).catch((error) => {
+      sendNotesToFirebase(note, "POST").catch((error) => {
         setError(error);
       });
     }

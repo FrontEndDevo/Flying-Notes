@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SingleNote from "../SingleNote/SingleNote";
 import { notesActions } from "../../../store/note-slice";
 import classes from "./UserNotes.module.scss";
+import { sendNotesToFirebase } from "../../../helpers/AllHelpers";
 
 const UserNotes = () => {
   const [error, setError] = useState(null);
@@ -41,7 +42,6 @@ const UserNotes = () => {
 
   const userNotes = useSelector((state) => state.note.notes);
   const totalUserNotes = useSelector((state) => state.note.totalNotes);
-
   // Search for a specific note by title.
   let searchedNote = [];
   const changeSearchHandler = (e) => {
@@ -51,13 +51,35 @@ const UserNotes = () => {
     setFilteredNotes(searchedNote);
   };
 
+  // Delete a note by double click:
+  const deleteNoteHandler = (id) => {
+    // First step: delete from Redux store.
+    const theRestOfTheNotes = userNotes.filter(
+      (deletedNote) => deletedNote.title !== id
+    );
+    /* Second step:delete from database by sending a new notes array 
+    but with method:'PUT',
+    to replace the current notes array in database by the new one here */
+    sendNotesToFirebase(theRestOfTheNotes, "PUT");
+  };
+
   // Mapping on userNotes.
   const existingNotes = userNotes.map((note) => (
-    <SingleNote key={note.title} title={note.title} content={note.content} />
+    <SingleNote
+      key={note.title}
+      title={note.title}
+      content={note.content}
+      deleteNote={deleteNoteHandler}
+    />
   ));
 
   const returnedNotes = filteredNotes.map((note) => (
-    <SingleNote key={note.title} title={note.title} content={note.content} />
+    <SingleNote
+      key={note.title}
+      title={note.title}
+      content={note.content}
+      deleteNote={deleteNoteHandler}
+    />
   ));
 
   return (
