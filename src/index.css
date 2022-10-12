@@ -8,6 +8,7 @@
 body {
   font-family: "Kalam", cursive;
   overflow-x: hidden;
+  background-color: #e6e7ef;
 }
 
 ul {
@@ -18,6 +19,6 @@ a {
   text-decoration: none;
 }
 
-img{
+img {
   -webkit-user-drag: none;
 }
