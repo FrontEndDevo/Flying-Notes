@@ -73,7 +73,7 @@
 
         &.labels {
           label {
-          font-size: 1rem;
+            font-size: 1rem;
             bottom: 100%;
           }
         }
@@ -101,6 +101,18 @@
       }
 
       button {
+        font-size: $med_font;
+        text-transform: uppercase;
+        border-radius: $large_border_radius;
+        border: none;
+        background-color: $med_teal;
+        color: $light_white;
+        padding: 0.5rem 0;
+        transition: $fast_transition;
+
+        &:hover {
+          background-color: $light_teal;
+        }
       }
     }
   }
