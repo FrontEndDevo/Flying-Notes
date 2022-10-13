@@ -42,10 +42,12 @@
       padding: 0.5rem;
       caret-color: $dark_blue;
       font-size: $small_font;
-      border-radius: $small_border_radius;
+      border-radius: $med_border_radius;
       border: none;
+      background-color: transparent;
       margin: 0 auto 3rem;
       width: 50%;
+      box-shadow: $med_teal 5px 10px 6px 0px, $med_teal -5px -5px 6px 0px;
       &:focus,
       &:active {
         outline: none;
