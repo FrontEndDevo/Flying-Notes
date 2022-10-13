@@ -5,24 +5,24 @@ import avatar from "../../assets/images/avatar.png";
 
 // Initial State for input events:
 const initialState = {
-  usernameBorder: false,
+  emailBorder: false,
   passwordBorder: false,
-  usernameLabel: false,
+  emailLabel: false,
   passwordLabel: false,
 };
 
 // Username & Password events
 const inputReducer = (state, action) => {
   switch (action.event) {
-    case "USERNAME_FOCUS":
+    case "EMAIL_FOCUS":
       return {
         ...state,
-        usernameBorder: true,
+        emailBorder: true,
       };
-    case "USERNAME_BLUR":
+    case "EMAIL_BLUR":
       return {
         ...state,
-        usernameBorder: false,
+        emailBorder: false,
       };
 
     case "PASSWORD_FOCUS":
@@ -50,11 +50,11 @@ const Auth = () => {
   const [events, dispatch] = useReducer(inputReducer, initialState);
 
   // Username (onFocus & onBlur) events handlers:
-  const usernameFocusHandler = () => {
-    dispatch({ event: "USERNAME_FOCUS" });
+  const emailFocusHandler = () => {
+    dispatch({ event: "EMAIL_FOCUS" });
   };
-  const usernameBlurHandler = () => {
-    dispatch({ event: "USERNAME_BLUR" });
+  const emailBlurHandler = () => {
+    dispatch({ event: "EMAIL_BLUR" });
   };
 
   // Password (onFocus & onBlur) events handlers:
@@ -65,9 +65,9 @@ const Auth = () => {
     dispatch({ event: "PASSWORD_BLUR" });
   };
 
-  // Set username classes:
-  const usernameFocus = `${classes.field} ${
-    events.usernameBorder ? `${classes.borders} ${classes.labels}` : ""
+  // Set email classes:
+  const emailFocus = `${classes.field} ${
+    events.emailBorder ? `${classes.borders} ${classes.labels}` : ""
   }`;
 
   // Set password classes:
@@ -86,14 +86,14 @@ const Auth = () => {
           <h3>Welcome</h3>
         </div>
         <form>
-          <div className={usernameFocus}>
-            <label htmlFor="username">Username</label>
+          <div className={emailFocus}>
+            <label htmlFor="email">E-mail</label>
             <input
               type="text"
-              name="username"
-              id="username"
-              onFocus={usernameFocusHandler}
-              onBlur={usernameBlurHandler}
+              name="email"
+              id="email"
+              onFocus={emailFocusHandler}
+              onBlur={emailBlurHandler}
             />
           </div>
           <div className={passwordFocus}>
