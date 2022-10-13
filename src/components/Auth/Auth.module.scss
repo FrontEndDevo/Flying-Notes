@@ -3,7 +3,6 @@
 .auth {
   display: flex;
   height: 100vh;
-  
   .wave-background {
     width: 60%;
     height: 100%;
@@ -24,7 +23,8 @@
     width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     gap: 2rem;
 
     .user {
@@ -32,9 +32,10 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+      margin: 0 10%;
       img {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
       }
 
       h3 {
@@ -45,7 +46,7 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 2.5rem;
       width: 50%;
 
       .field {
@@ -63,10 +64,17 @@
           left: 50%;
         }
 
-        &.focus {
+        &.borders {
           &::before {
             width: 100%;
-          left: 0;
+            left: 0;
+          }
+        }
+
+        &.labels {
+          label {
+          font-size: 1rem;
+            bottom: 100%;
           }
         }
 
@@ -75,7 +83,7 @@
           height: 40px;
           border: none;
           border-bottom: 2px solid;
-          border-color: #ccc;
+          border-color: $light_gray;
           background-color: transparent;
           font-size: $med_font;
           caret-color: $light_green;
@@ -84,6 +92,11 @@
 
         label {
           font-size: $small_font;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          transition: $slow_transition;
+          color: $dark_gray;
         }
       }
 
