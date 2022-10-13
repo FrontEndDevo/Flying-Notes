@@ -100,16 +100,16 @@
         }
       }
 
-      p{
+      p {
         text-align: center;
         font-size: $small_font;
-        span{
-        cursor: pointer;
-        color: $dark_blue;
-        transition: $fast_transition;
-        &:hover{
-          color: $light_blue;
-        }
+        span {
+          cursor: pointer;
+          color: $dark_blue;
+          transition: $fast_transition;
+          &:hover {
+            color: $light_blue;
+          }
         }
       }
 
@@ -126,6 +126,11 @@
         &:hover {
           background-color: $light_teal;
         }
+      }
+
+      .invalid {
+        color: $dark_red;
+        margin-top: -2rem;
       }
     }
   }

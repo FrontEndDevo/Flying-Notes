@@ -3,14 +3,20 @@ import classes from "./Auth.module.scss";
 import auth_img from "../../assets/images/auth_img.svg";
 import avatar from "../../assets/images/avatar.png";
 
+// Regular Expressions for email and password validation:
+const emailRegExp = /(.+)@(.+).(com|net|org|info)/; // should be something like this test@test.com
+const passwordRegExp = /[0-9]{8,}/; // Should contain at least 8 digits.
+
 // Initial State for input events:
 const initialState = {
   emailInputVal: "",
-  passwordInputVal: "",
   emailBorder: false,
-  passwordBorder: false,
   emailLabel: false,
+  isEmailValid: false,
+  passwordInputVal: "",
+  passwordBorder: false,
   passwordLabel: false,
+  isPasswordValid: false,
 };
 
 // Username & Password events
@@ -31,6 +37,11 @@ const inputReducer = (state, action) => {
         ...state,
         emailInputVal: action.value,
       };
+    case "EMAIL_VALIDATION":
+      return {
+        ...state,
+        isEmailValid: action.value,
+      };
 
     case "PASSWORD_FOCUS":
       return {
@@ -47,6 +58,11 @@ const inputReducer = (state, action) => {
         ...state,
         passwordInputVal: action.value,
       };
+    case "PASSWORD_VALIDATION":
+      return {
+        ...state,
+        isPasswordValid: action.value,
+      };
 
     default:
       return initialState;
@@ -62,27 +78,46 @@ const Auth = () => {
 
   const [events, dispatch] = useReducer(inputReducer, initialState);
 
+  // Input Values.
   const emailValue = events.emailInputVal;
   const passwordValue = events.passwordInputVal;
 
-  // Username (onFocus & onBlur) events handlers:
+  // Input Validity
+  const isEmailValid = events.isEmailValid;
+  const isPasswordValid = events.isPasswordValid;
+
+  // Username (onFocus & onBlur & onChange) events handlers:
   const emailChangeHandler = (e) => {
     dispatch({ event: "EMAIL_VALUE", value: e.target.value });
+
+    // Check the validity of "email":
+    const emailVal = e.target.value;
+    const isValid = emailRegExp.test(emailVal);
+    dispatch({ event: "EMAIL_VALIDATION", value: isValid });
   };
+
   const emailFocusHandler = () => {
     dispatch({ event: "EMAIL_FOCUS" });
   };
+
   const emailBlurHandler = () => {
     dispatch({ event: "EMAIL_BLUR" });
   };
 
-  // Password (onFocus & onBlur) events handlers:
+  // Password (onFocus & onBlur & onChange) events handlers:
   const passwordChangeHandler = (e) => {
     dispatch({ event: "PASSWORD_VALUE", value: e.target.value });
+
+    // Check the validity of "email":
+    const passwordVal = e.target.value;
+    const isValid = passwordRegExp.test(passwordVal);
+    dispatch({ event: "PASSWORD_VALIDATION", value: isValid });
   };
+
   const passwordFocusHandler = () => {
     dispatch({ event: "PASSWORD_FOCUS" });
   };
+
   const passwordBlurHandler = () => {
     dispatch({ event: "PASSWORD_BLUR" });
   };
@@ -90,8 +125,11 @@ const Auth = () => {
   // FORM SUBMMITION
   const submitFormHandler = (event) => {
     event.preventDefault();
-    console.log(events.emailInputVal);
-    console.log(events.passwordInputVal);
+    console.log(emailValue);
+    console.log(emailRegExp.test(emailValue.trim()));
+    console.log(passwordValue);
+    console.log(passwordRegExp.test(passwordValue.trim()));
+
     // This will reset values, thanks to default case.
     dispatch({});
   };
@@ -101,10 +139,18 @@ const Auth = () => {
     events.emailBorder ? `${classes.borders} ${classes.labels}` : ""
   } ${emailValue.length === 0 ? "" : classes.labels}`;
 
+  const emailValidity = !isEmailValid && emailValue.length > 0 && (
+    <p className={classes.invalid}>The E-mail is invalid!</p>
+  );
+
   // Set password classes:
   const passwordFocus = `${classes.field} ${
     events.passwordBorder ? `${classes.borders} ${classes.labels}` : ""
   } ${passwordValue.length === 0 ? "" : classes.labels}`;
+
+  const passwordValidity = !isPasswordValid && passwordValue.length > 0 && (
+    <p className={classes.invalid}>The password is invalid!</p>
+  );
 
   return (
     <section className={classes.auth}>
@@ -129,6 +175,7 @@ const Auth = () => {
               onChange={emailChangeHandler}
             />
           </div>
+          {emailValidity}
           <div className={passwordFocus}>
             <label htmlFor="password">Password</label>
             <input
@@ -141,6 +188,7 @@ const Auth = () => {
               onChange={passwordChangeHandler}
             />
           </div>
+          {passwordValidity}
           {isMember && (
             <p>
               Not a user?{" "}
