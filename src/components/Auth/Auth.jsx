@@ -65,6 +65,12 @@ const Auth = () => {
     dispatch({ event: "PASSWORD_BLUR" });
   };
 
+  // FORM SUBMMITION
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+    console.log(event);
+  };
+
   // Set email classes:
   const emailFocus = `${classes.field} ${
     events.emailBorder ? `${classes.borders} ${classes.labels}` : ""
@@ -85,7 +91,7 @@ const Auth = () => {
           <img src={avatar} alt="auth-avatar" />
           <h3>Welcome</h3>
         </div>
-        <form>
+        <form onSubmit={submitFormHandler}>
           <div className={emailFocus}>
             <label htmlFor="email">E-mail</label>
             <input
