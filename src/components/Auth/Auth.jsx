@@ -129,7 +129,7 @@ const Auth = () => {
     console.log(emailRegExp.test(emailValue.trim()));
     console.log(passwordValue);
     console.log(passwordRegExp.test(passwordValue.trim()));
-
+    
     // This will reset values, thanks to default case.
     dispatch({});
   };
@@ -170,6 +170,7 @@ const Auth = () => {
               type="text"
               name="email"
               id="email"
+              required
               onFocus={emailFocusHandler}
               onBlur={emailBlurHandler}
               onChange={emailChangeHandler}
@@ -183,6 +184,7 @@ const Auth = () => {
               type="password"
               name="password"
               id="password"
+              required
               onFocus={passwordFocusHandler}
               onBlur={passwordBlurHandler}
               onChange={passwordChangeHandler}
