@@ -160,7 +160,7 @@ const Auth = () => {
       <div className={classes.content}>
         <div className={classes.user}>
           <img src={avatar} alt="auth-avatar" />
-          <h3>Welcome</h3>
+          <h3>{isMember ? "Welcome Back" : "Welcome"}</h3>
         </div>
         <form onSubmit={submitFormHandler}>
           <div className={emailFocus}>
@@ -201,8 +201,7 @@ const Auth = () => {
               <span onClick={switchAuthWayHandler}>Login now</span>
             </p>
           )}
-          {isMember && <button>Login</button>}
-          {!isMember && <button>Sign Up</button>}
+          <button>{isMember ? "login" : "Sign up"}</button>
         </form>
       </div>
     </section>
