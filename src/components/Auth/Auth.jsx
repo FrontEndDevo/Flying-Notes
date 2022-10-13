@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import classes from "./Auth.module.scss";
 import auth_img from "../../assets/images/auth_img.svg";
 import avatar from "../../assets/images/avatar.png";
@@ -42,6 +42,11 @@ const inputReducer = (state, action) => {
 };
 
 const Auth = () => {
+  const [isMember, setIsMember] = useState(true);
+
+  const switchSigningHandler = () => {
+    setIsMember((state) => !state);
+  };
   const [events, dispatch] = useReducer(inputReducer, initialState);
 
   // Username (onFocus & onBlur) events handlers:
@@ -101,7 +106,20 @@ const Auth = () => {
               onBlur={passwordBlurHandler}
             />
           </div>
-          <button>Login</button>
+          {isMember && (
+            <p>
+              Not a user?{" "}
+              <span onClick={switchSigningHandler}>Sign up now</span>
+            </p>
+          )}
+          {!isMember && (
+            <p>
+              Already have an account?{" "}
+              <span onClick={switchSigningHandler}>Login now</span>
+            </p>
+          )}
+          {isMember && <button>Login</button>}
+          {!isMember && <button>Sign Up</button>}
         </form>
       </div>
     </section>

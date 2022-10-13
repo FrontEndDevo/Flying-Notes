@@ -100,6 +100,19 @@
         }
       }
 
+      p{
+        text-align: center;
+        font-size: $small_font;
+        span{
+        cursor: pointer;
+        color: $dark_blue;
+        transition: $fast_transition;
+        &:hover{
+          color: $light_blue;
+        }
+        }
+      }
+
       button {
         font-size: $med_font;
         text-transform: uppercase;
