@@ -1,9 +1,12 @@
 import React from "react";
 import classes from "./Auth.module.scss";
+import auth_img from "../../assets/images/auth_img.svg";
 const Auth = () => {
   return (
     <section className={classes.auth}>
-      <div className={classes.wave}></div>
+      <div className={classes["wave-background"]}>
+        <img src={auth_img} alt="auth-light-background" />
+      </div>
       <div className={classes.content}>
         <div className={classes.user}>
           <img src="" alt="" />
