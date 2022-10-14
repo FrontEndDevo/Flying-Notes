@@ -157,7 +157,7 @@ const Auth = () => {
     events.emailBorder ? `${classes.borders} ${classes.labels}` : ""
   } ${emailValue.length === 0 ? "" : classes.labels}`;
 
-  const emailValidity = !isEmailValid && emailValue.length > 0 && (
+  const emailValidity = !isEmailValid && !isMember && emailValue.length > 0 && (
     <p className={classes.invalid}>The E-mail is invalid!</p>
   );
 
@@ -166,9 +166,11 @@ const Auth = () => {
     events.passwordBorder ? `${classes.borders} ${classes.labels}` : ""
   } ${passwordValue.length === 0 ? "" : classes.labels}`;
 
-  const passwordValidity = !isPasswordValid && passwordValue.length > 0 && (
-    <p className={classes.invalid}>The password is invalid!</p>
-  );
+  const passwordValidity = !isPasswordValid &&
+    !isMember &&
+    passwordValue.length > 0 && (
+      <p className={classes.invalid}>The password is invalid!</p>
+    );
 
   return (
     <section className={classes.auth}>
