@@ -4,7 +4,7 @@
   color: $light_white;
   background-color: $deep_purple;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 0.5rem;
   font-weight: 700;
@@ -27,5 +27,18 @@
 
   .active {
     background-color: $med_teal;
+  }
+
+  button{
+    font-size: $small_font;
+    background-color: $dark_red;
+    border: none;
+    color: $light_white;
+    padding: 0.5rem 2rem;
+    border-radius: $large_border_radius;
+    transition: $fast_transition;
+    &:hover{
+      background-color: $light_red;
+    }
   }
 }

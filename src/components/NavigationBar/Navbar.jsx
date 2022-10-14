@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { AuthActions } from "../../store/auth-slice";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(AuthActions.logout());
+  };
+
   return (
     <div className={styles.navbar}>
       <h1>My Notes</h1>
@@ -23,6 +31,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
+      <button onClick={logoutHandler}>Logout</button>
     </div>
   );
 };
