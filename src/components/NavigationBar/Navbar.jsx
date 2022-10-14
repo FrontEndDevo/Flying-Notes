@@ -8,7 +8,7 @@ const Navbar = () => {
   const history = useHistory();
   const logoutHandler = () => {
     dispatch(AuthActions.logout());
-    history.replace("/auth");
+    history.replace("/authentication");
   };
 
   return (

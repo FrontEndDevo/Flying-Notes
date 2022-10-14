@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       {!isAuth && (
-        <Route path="/auth">
+        <Route path="/authentication">
           <Auth />
         </Route>
       )}
@@ -24,7 +24,7 @@ const App = () => {
             <Route path="/" exact>
               <Redirect to="/home" />
             </Route>
-            <Route path="/auth" exact>
+            <Route path="/authentication" exact>
               <Redirect to="/home" />
             </Route>
             <Route path="/home">
