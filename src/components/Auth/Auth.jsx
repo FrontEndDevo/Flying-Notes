@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 import classes from "./Auth.module.scss";
 import auth_img from "../../assets/images/auth_img.svg";
 import avatar from "../../assets/images/avatar.png";
+import { signInOrSignUp } from "../../helpers/AllHelpers";
 
 // Regular Expressions for email and password validation:
 const emailRegExp = /(.+)@(.+).(com|net|org|info)/; // should be something like this test@test.com
@@ -71,6 +72,7 @@ const inputReducer = (state, action) => {
 
 const Auth = () => {
   const [isMember, setIsMember] = useState(true);
+  const [isAccountCreated, setIsAccountCreated] = useState(false);
 
   const switchAuthWayHandler = () => {
     setIsMember((state) => !state);
@@ -92,7 +94,7 @@ const Auth = () => {
 
     // Check the validity of "email":
     const emailVal = e.target.value;
-    const isValid = emailRegExp.test(emailVal);
+    const isValid = emailRegExp.test(emailVal.trim());
     dispatch({ event: "EMAIL_VALIDATION", value: isValid });
   };
 
@@ -110,7 +112,7 @@ const Auth = () => {
 
     // Check the validity of "email":
     const passwordVal = e.target.value;
-    const isValid = passwordRegExp.test(passwordVal);
+    const isValid = passwordRegExp.test(passwordVal.trim());
     dispatch({ event: "PASSWORD_VALIDATION", value: isValid });
   };
 
@@ -123,15 +125,31 @@ const Auth = () => {
   };
 
   // FORM SUBMMITION
+  let statusMsg = (
+    <p className={classes.valid}>Your account was created successfully</p>
+  );
   const submitFormHandler = (event) => {
     event.preventDefault();
-    console.log(emailValue);
-    console.log(emailRegExp.test(emailValue.trim()));
-    console.log(passwordValue);
-    console.log(passwordRegExp.test(passwordValue.trim()));
-    
-    // This will reset values, thanks to default case.
-    dispatch({});
+
+    if (!isMember && isEmailValid && isPasswordValid) {
+      // Send Request to firebase to create the user account:
+      const userData = {
+        email: emailValue.trim(),
+        password: passwordValue.trim(),
+      };
+
+      signInOrSignUp(userData, "SIGN_UP").catch((error) => {
+        statusMsg = <p className={classes.invalid}>{error}</p>;
+      });
+
+      setIsAccountCreated(true);
+      // To disappear the message after 5 seconds.
+      setTimeout(() => {
+        setIsAccountCreated(false);
+      }, 5000);
+      // This will reset values, thanks to default case.
+      dispatch({});
+    }
   };
 
   // Set email classes:
@@ -205,6 +223,7 @@ const Auth = () => {
           )}
           <button>{isMember ? "login" : "Sign up"}</button>
         </form>
+        {isAccountCreated && statusMsg}
       </div>
     </section>
   );
