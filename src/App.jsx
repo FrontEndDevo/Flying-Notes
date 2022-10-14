@@ -12,12 +12,19 @@ const App = () => {
 
   return (
     <div>
-      {!isAuth && <Auth />}
+      {!isAuth && (
+        <Route path="/auth">
+          <Auth />
+        </Route>
+      )}
       {isAuth && (
         <div>
           <Navbar />
           <Switch>
             <Route path="/" exact>
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/auth" exact>
               <Redirect to="/home" />
             </Route>
             <Route path="/home">
