@@ -3,6 +3,8 @@ import classes from "./Auth.module.scss";
 import auth_img from "../../assets/images/auth_img.svg";
 import avatar from "../../assets/images/avatar.png";
 import { signInOrSignUp } from "../../helpers/AllHelpers";
+import { useDispatch } from "react-redux";
+import { AuthActions } from "../../store/auth-slice";
 
 // Regular Expressions for email and password validation:
 const emailRegExp = /(.+)@(.+).(com|net|org|info)/; // should be something like this test@test.com
@@ -124,23 +126,30 @@ const Auth = () => {
     dispatch({ event: "PASSWORD_BLUR" });
   };
 
+  const authDispatch = useDispatch();
+
   // FORM SUBMMITION
-  let statusMsg = (
+  let statusMsg = !isMember && (
     <p className={classes.valid}>Your account was created successfully</p>
   );
-  const submitFormHandler = (event) => {
+  const submitFormHandler = async (event) => {
     event.preventDefault();
 
-    if (!isMember && isEmailValid && isPasswordValid) {
-      // Send Request to firebase to create the user account:
+    if (isEmailValid && isPasswordValid) {
+      // Prepare and send a request to firebase to create this user-account:
       const userData = {
         email: emailValue.trim(),
         password: passwordValue.trim(),
       };
-
-      signInOrSignUp(userData, "SIGN_UP").catch((error) => {
-        statusMsg = <p className={classes.invalid}>{error}</p>;
-      });
+      const enterState = isMember ? "SIGN_IN" : "SIGN_UP";
+      const responseObj = await signInOrSignUp(userData, enterState).catch(
+        (error) => {
+          statusMsg = <p className={classes.invalid}>{error}</p>;
+        }
+      );
+      if (enterState === "SIGN_IN" && responseObj.registered) {
+        authDispatch(AuthActions.login(responseObj.idToken));
+      }
 
       setIsAccountCreated(true);
       // To disappear the message after 5 seconds.
@@ -148,7 +157,7 @@ const Auth = () => {
         setIsAccountCreated(false);
       }, 5000);
       // This will reset values, thanks to default case.
-      dispatch({});
+      !isMember && dispatch({});
     }
   };
 

@@ -45,5 +45,8 @@ export async function signInOrSignUp(userData, status) {
       errorMessage = errorData.error.message;
     }
     throw new Error(errorMessage);
+  } else {
+    const data = await res.json();
+    return data;
   }
 }
