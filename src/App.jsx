@@ -13,9 +13,14 @@ const App = () => {
   return (
     <div>
       {!isAuth && (
-        <Route path="/authentication">
-          <Auth />
-        </Route>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/authentication" />
+          </Route>
+          <Route path="/authentication">
+            <Auth />
+          </Route>
+        </Switch>
       )}
       {isAuth && (
         <div>
