@@ -8,7 +8,10 @@ const Navbar = () => {
   const history = useHistory();
   const logoutHandler = () => {
     dispatch(AuthActions.logout());
+    // Redirect user to login page.
     history.replace("/authentication");
+    // Remove this item from localStorage.
+    localStorage.removeItem("isAuth");
   };
 
   return (

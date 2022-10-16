@@ -149,6 +149,8 @@ const Auth = () => {
       );
       if (enterState === "SIGN_IN" && responseObj.registered) {
         authDispatch(AuthActions.login(responseObj.idToken));
+        // Add the authentication to localStorage to keep signing in.
+        localStorage.setItem("isAuth", true);
       }
 
       setIsAccountCreated(true);

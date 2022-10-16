@@ -8,7 +8,11 @@ import { useSelector } from "react-redux";
 import Auth from "./components/Auth/Auth";
 
 const App = () => {
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  let isAuth = useSelector((state) => state.auth.isAuthenticated);
+  // This check to keep the user login.
+  if (localStorage.getItem("isAuth")) {
+    isAuth = true;
+  }
 
   return (
     <div>
