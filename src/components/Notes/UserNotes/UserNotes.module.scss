@@ -43,14 +43,15 @@
       caret-color: $dark_blue;
       font-size: $small_font;
       border-radius: $med_border_radius;
-      border: none;
       background-color: transparent;
       margin: 0 auto 3rem;
+      transition: $slow_transition;
       width: 50%;
-      box-shadow: $med_teal 5px 10px 6px 0px, $med_teal -5px -5px 6px 0px;
+      border: 2px solid $med_teal;
       &:focus,
       &:active {
         outline: none;
+        box-shadow: $med_teal 5px 10px 6px 0px, $med_teal -5px -5px 6px 0px;
       }
     }
 
