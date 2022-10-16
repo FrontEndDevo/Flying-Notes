@@ -33,6 +33,30 @@
     color: $light_white;
 
     .tools {
+      
+      button {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border: 2px solid $dark_blue;
+        padding: 0.5rem 1rem;
+        border-radius: $med_border_radius;
+        background-color: transparent;
+        color: $light_white;
+        font-size: $small_font;
+        cursor: pointer;
+        transition: $fast_transition;
+
+        &:hover{
+          border-color: $dark_orange;
+          box-shadow: $dark_orange 4px 6px;
+        }
+
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
     }
 
     .delete {
