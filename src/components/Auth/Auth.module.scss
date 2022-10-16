@@ -3,6 +3,7 @@
 .auth {
   display: flex;
   height: 100vh;
+
   .wave-background {
     width: 60%;
     height: 100%;
@@ -17,7 +18,71 @@
       bottom: 0;
       left: 10%;
     }
+
+    h2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      width: 50%;
+      height: 10%;
+      color: $blue_gray;
+      background-color: $lighter_teal;
+      border-bottom-right-radius: $med_border_radius;
+      border-bottom-left-radius: $med_border_radius;
+      margin: 0 auto;
+    }
   }
+
+  // An Experiment to draw a note 😁
+  // .note-shape {
+  //   display: flex;
+  //   margin: 3rem 3rem 0 0;
+  //   width: 25%;
+  //   height: 40%;
+  //   background-color: $light_blue;
+  //   position: relative;
+
+  //   &::after {
+  //     content: "";
+  //     background-color: $med_white;
+  //     position: absolute;
+  //     bottom: -85px;
+  //     right: -65px;
+  //     width: 160px;
+  //     height: 200px;
+  //     border: 1px solid $med_white;
+  //     border-top-right-radius: 50%;
+  //     border-bottom-right-radius: 50%;
+  //     transform: rotate(45deg);
+  //   }
+  //   &:before {
+  //     content: "";
+  //     background-color: $lighter_blue;
+  //     position: absolute;
+  //     bottom: 0;
+  //     right: 0;
+  //     width: 125px;
+  //     height: 125px;
+  //     border: 10px solid $lighter_blue;
+  //   }
+
+  //   .hook {
+  //     width: 15%;
+  //     height: 25%;
+  //     background-color: $lighter_blue;
+  //     position: absolute;
+  //     top: -8%;
+  //     left: 42%;
+  //   }
+
+  //   h2 {
+  //     font-size: $large_font;
+  //     margin: 40% auto;
+  //     font-style: italic;
+  //     color: #f9a825;
+  //   }
+  // }
 
   .content {
     width: 40%;

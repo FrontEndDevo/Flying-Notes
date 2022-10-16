@@ -187,7 +187,13 @@ const Auth = () => {
     <section className={classes.auth}>
       <div className={classes["wave-background"]}>
         <img src={auth_img} alt="auth-light-background" />
+        <h2>Flying Notes</h2>
       </div>
+      {/* An Experiment to draw a note 😁 */}
+      {/* <div className={classes["note-shape"]}>
+        <div className={classes.hook}></div>
+        <h2>Flying Notes</h2>
+      </div> */}
       <div className={classes.content}>
         <div className={classes.user}>
           <img src={avatar} alt="auth-avatar" />
