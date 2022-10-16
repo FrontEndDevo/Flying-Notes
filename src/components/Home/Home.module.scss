@@ -34,7 +34,7 @@
     font-size: $small_font;
     font-style: italic;
     font-weight: 700;
-    color: $dark_gray;
+    color: $blue_gray;
   }
 
   .buttons {
@@ -45,7 +45,7 @@
     top: 60%;
     left: 34%;
     a {
-      color: black;
+      color: $blue_gray;
       text-align: center;
       padding: 0.5rem 1rem;
       border: 1px solid $med_teal;
