@@ -202,4 +202,16 @@
       color: $light_green;
     }
   }
+
+  .test {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: transparent;
+    color: $blue_gray;
+    font-size: $small_font;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

@@ -183,6 +183,13 @@ const Auth = () => {
       <p className={classes.invalid}>The password is invalid!</p>
     );
 
+  const addTestAccountHandler = () => {
+    dispatch({ event: "EMAIL_VALUE", value: "test@test.com" });
+    dispatch({ event: "PASSWORD_VALUE", value: "11111111" });
+    dispatch({ event: "EMAIL_VALIDATION", value: true });
+    dispatch({ event: "PASSWORD_VALIDATION", value: true });
+  };
+
   return (
     <section className={classes.auth}>
       <div className={classes["wave-background"]}>
@@ -242,6 +249,9 @@ const Auth = () => {
           )}
           <button>{isMember ? "login" : "Sign up"}</button>
         </form>
+        <button className={classes.test} onClick={addTestAccountHandler}>
+          Add a test account?
+        </button>
         {isAccountCreated && statusMsg}
       </div>
     </section>
