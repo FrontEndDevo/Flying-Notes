@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <h1>My Notes</h1>
+      <h1>Flying Notes</h1>
 
       <ul>
         <li>
