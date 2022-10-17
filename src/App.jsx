@@ -13,7 +13,6 @@ const App = () => {
   if (localStorage.getItem("isAuth")) {
     isAuth = true;
   }
-
   return (
     <div>
       {!isAuth && (

@@ -13,8 +13,8 @@ const Home = () => {
         <p>Notes in your mind</p>
       </div>
       <div className={classes.buttons}>
-        <Link to="/my-notes">My notes</Link>
-        <Link to="/add-new-note">Add a new note</Link>
+        <Link to="/Flying-Notes/my-notes">My notes</Link>
+        <Link to="/Flying-Notes/add-new-note">Add a new note</Link>
       </div>
     </main>
   );
