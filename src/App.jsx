@@ -17,7 +17,7 @@ const App = () => {
     <div>
       {!isAuth && (
         <Switch>
-          <Route path="/Flying-Notes" exact>
+          <Route path="/Flying-Notes/" exact>
             <Redirect to="/Flying-Notes/authentication" />
           </Route>
           <Route path="/Flying-Notes/authentication">
@@ -29,7 +29,7 @@ const App = () => {
         <div>
           <Navbar />
           <Switch>
-            <Route path="/" exact>
+            <Route path="/Flying-Notes/" exact>
               <Redirect to="/Flying-Notes/home" />
             </Route>
             <Route path="/Flying-Notes/authentication" exact>
