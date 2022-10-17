@@ -89,7 +89,7 @@ const UserNotes = () => {
   // Handling messages in JSX to keep JSX lean.
   const noNotes = totalUserNotes === 0 && (
     <p className={classes["no-notes"]}>
-      You have no notes, <Link to="/add-new-note">Add one?</Link>
+      You have no notes, <Link to="/Flying-Notes/add-new-note">Add one?</Link>
     </p>
   );
 
@@ -123,7 +123,7 @@ const UserNotes = () => {
                 &gt;
               </span>
             </h4>
-            <Link to="/add-new-note">Add another one?</Link>
+            <Link to="/Flying-Notes/add-new-note">Add another one?</Link>
           </div>
           <ul>{renderedNotes}</ul>
         </div>
