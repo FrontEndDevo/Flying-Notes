@@ -8,8 +8,12 @@ Technologies Used:
 Reactjs with Redux toolkit and Routing v5 & SASS for styling, I also used Firebase as a Back-End for database & authentication.
 
 Status 📶: in-progress.
+I got stuck with a Firebase problem, that I don't know how to link or connect the existing account with its notes, I tried searching a lot but I still couldn't solve the problem.
+Therefore, my friend, you will find that all the notes you write will be saved in FireBase and will appear to you in any account you create.
+I'm sorry about that, but I'm working on this problem.
 
 Application snapshots (without pseudo classes)
+
 ![1](https://user-images.githubusercontent.com/98362185/196167700-c43c0580-1ec2-4af6-85a6-994cb05ff869.png)
 
 ![2](https://user-images.githubusercontent.com/98362185/196167705-2505c75d-11e8-43d5-9091-e9ae3b747d22.png)
