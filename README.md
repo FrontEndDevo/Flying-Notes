@@ -34,3 +34,12 @@ Application snapshots (without pseudo classes)
 
 ![10](https://user-images.githubusercontent.com/98362185/196167854-07060748-f0e7-423d-8705-d2399f5fddb4.png)
 
+
+Here is the planning and analysis phase, which is before the implementation phase, and of course we are missing the maintenance phase, I am working on it in parallel with the rest of my projects on GitHub here.
+
+![1](https://user-images.githubusercontent.com/98362185/196180127-8129e51d-4a45-48bf-91e5-7ed16766f3a4.jpeg)
+
+![2](https://user-images.githubusercontent.com/98362185/196180134-c5a3daf8-4092-44e2-92d7-5cb8cb254320.jpeg)
+
+![3](https://user-images.githubusercontent.com/98362185/196180137-9a6b4fb2-4032-48a0-a520-23f3c9d9d1c3.jpeg)
+
