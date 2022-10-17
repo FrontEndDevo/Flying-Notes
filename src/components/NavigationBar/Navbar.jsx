@@ -9,7 +9,7 @@ const Navbar = () => {
   const logoutHandler = () => {
     dispatch(AuthActions.logout());
     // Redirect user to login page.
-    history.replace("/authentication");
+    history.replace("/Flying-Notes/authentication");
     // Remove this item from localStorage.
     localStorage.removeItem("isAuth");
   };
@@ -20,17 +20,20 @@ const Navbar = () => {
 
       <ul>
         <li>
-          <NavLink activeClassName={styles.active} to="/home">
+          <NavLink activeClassName={styles.active} to="/Flying-Notes/home">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName={styles.active} to="/my-notes">
+          <NavLink activeClassName={styles.active} to="/Flying-Notes/my-notes">
             My Notes
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName={styles.active} to="/add-new-note">
+          <NavLink
+            activeClassName={styles.active}
+            to="/Flying-Notes/add-new-note"
+          >
             Add a Note
           </NavLink>
         </li>
