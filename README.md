@@ -2,7 +2,9 @@
 
 Demo Link: https://frontenddevo.github.io/Flying-Notes/
 
-Now with this simple application, You can easily book(record) your notes in an online book, and of course, you can return in anytime to read, write, and edit your own notes.
+Now with Flying Notes app, You can easily book(record) your notes in an online book, and of course, you can return in anytime to read, write, and edit your own notes.
+Through the Flying Notes app, you can write your notes easily and not only that, you can edit, delete and control them as you want.
+Of course, you can create your own account to keep all your notes safe in your account, try the application now through the link above.
 
 Technologies Used:
 Reactjs with Redux toolkit and Routing v5 & SASS for styling, I also used Firebase as a Back-End for database & authentication.
