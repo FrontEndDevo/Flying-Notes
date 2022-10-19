@@ -1,4 +1,5 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 
 .navbar {
   color: $light_white;
@@ -30,7 +31,7 @@
     background-color: $med_teal;
   }
 
-  button{
+  button {
     font-size: $small_font;
     background-color: $dark_red;
     border: none;
@@ -38,8 +39,52 @@
     padding: 0.5rem 2rem;
     border-radius: $large_border_radius;
     transition: $fast_transition;
-    &:hover{
+    &:hover {
       background-color: $light_red;
+    }
+  }
+
+  @include responsiveNote(tablet) {
+    font-weight: 400;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    ul {
+      gap: 1rem;
+
+      a {
+        padding: 0.3rem 1.5rem;
+      }
+    }
+
+    button {
+      padding: 0.3rem 1.5rem;
+    }
+  }
+
+  @include responsiveNote(mobile) {
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    gap: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    ul {
+      a {
+        padding: 0.1rem 1rem;
+        font-size: 1rem;
+      }
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.2rem;
+      width: 100%;
     }
   }
 }
