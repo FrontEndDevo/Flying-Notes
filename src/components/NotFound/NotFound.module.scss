@@ -1,4 +1,6 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
+
 .not-found {
   display: flex;
   flex-direction: column;
@@ -9,5 +11,15 @@
   h3 {
     color: $dark_red;
     font-size: 2rem;
+  }
+
+  @include responsiveNote(mobile) {
+    h3 {
+      font-size: 1rem;
+    }
+    img {
+      width: 300px;
+      height: 300px;
+    }
   }
 }
