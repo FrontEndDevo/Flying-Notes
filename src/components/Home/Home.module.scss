@@ -1,4 +1,6 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
+
 .home {
   background-image: url("../../assets/images/home.jpg");
   background-size: cover;
@@ -6,6 +8,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  overflow-x: hidden;
 
   img {
     position: absolute;
@@ -58,6 +61,100 @@
       &:hover {
         color: $light_white;
         background-color: $med_teal;
+      }
+    }
+  }
+}
+
+@include responsiveNote(desktop) {
+  .home {
+    img {
+      top: 2%;
+      left: 40%;
+      width: 300px;
+    }
+
+    h2 {
+      font-size: $med_font;
+      top: 25%;
+      left: 40%;
+    }
+
+    .notes {
+      top: 35%;
+      left: 32%;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      gap: 4rem;
+      top: 45%;
+      left: 57%;
+      a {
+        padding: 0.5rem 3rem;
+      }
+    }
+  }
+}
+
+@include responsiveNote(tablet) {
+  .home {
+    img {
+      top: 2%;
+      left: 40%;
+      width: 300px;
+    }
+
+    h2 {
+      font-size: $med_font;
+      top: 25%;
+      left: 38%;
+    }
+
+    .notes {
+      gap: 3rem;
+      top: 35%;
+      left: 25%;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      gap: 4rem;
+      top: 45%;
+      left: 60%;
+      a {
+        padding: 0.5rem 3rem;
+      }
+    }
+  }
+}
+
+@include responsiveNote(mobile) {
+  .home {
+    img {
+      left: 25%;
+      width: 200px;
+    }
+
+    h2 {
+      font-size: $small_font;
+      top: 25%;
+      left: 22%;
+    }
+
+    .notes {
+      gap: 3rem;
+      top: 40%;
+      left: 1%;
+      font-size: 1rem;
+    }
+
+    .buttons {
+      gap: 2rem;
+      top: 80%;
+      left: 25%;
+      a {
+        padding: 0.5rem 3rem;
       }
     }
   }
