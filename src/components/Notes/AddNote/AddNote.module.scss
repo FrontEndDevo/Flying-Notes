@@ -1,4 +1,5 @@
 @use "../../../styles/vars" as *;
+@use "../../../styles/mixins" as *;
 
 .add-new-note {
   background-color: $dark;
@@ -9,10 +10,11 @@
   align-items: center;
   gap: 1rem;
   flex-direction: column;
+  padding: 1rem 0;
 
   h2 {
     color: $light_teal;
-    font-size: 3rem;
+    font-size: calc(2 * $med_font);
     font-weight: 400;
     font-style: italic;
     padding: 0 2rem;
@@ -37,8 +39,8 @@
     gap: 1rem;
     width: 50vw;
     border: 5px solid $dark_blue;
-    padding: 1rem 2rem 2rem;
     border-radius: $large_border_radius;
+    padding: 1rem;
 
     .note {
       display: flex;
@@ -47,13 +49,13 @@
 
       label {
         color: $dark_blue;
-        font-size: 2rem;
+        font-size: $large_font;
         font-weight: 700;
       }
 
       input,
       textarea {
-        font-size: 1.5rem;
+        font-size: $med_font;
         border-radius: $small_border_radius;
         padding: 0.5rem 1rem;
         caret-color: $dark_blue;
@@ -78,7 +80,7 @@
         resize: none;
       }
 
-      .error{
+      .error {
         margin-top: 0.5rem;
         font-size: 1.3rem;
         color: $dark_red;
@@ -90,7 +92,7 @@
       background-color: transparent;
       cursor: pointer;
       padding: 0.5rem 0;
-      font-size: 1.5rem;
+      font-size: $med_font;
       border-radius: $med_border_radius;
       border: 2px solid $dark_blue;
       transition: $fast_transition;
@@ -103,17 +105,88 @@
       color: $light_green;
       text-align: center;
       margin-top: 0.5rem;
-        font-size: 1.3rem;
-    } 
+      font-size: 1.3rem;
+    }
+  }
+
+  @include responsiveNote(tablet) {
+    h2 {
+      font-size: 2.5rem;
+      word-spacing: -5px;
+    }
+
+    form {
+      width: 80vw;
+
+      .note {
+        label {
+          font-size: $med_font;
+        }
+
+        .error {
+          font-size: $small_font;
+        }
+      }
+
+      button {
+        font-size: $small_font;
+      }
+
+      .success {
+        font-size: $small_font;
+      }
+    }
+  }
+
+  @include responsiveNote(mobile) {
+    h2 {
+      font-size: 2rem;
+      word-spacing: 0;
+    }
+
+    form {
+      width: 90vw;
+
+      .note {
+        label {
+          font-size: $med_font;
+          font-weight: 400;
+          text-align: start;
+        }
+
+        input,
+        textarea {
+          font-size: $small_font;
+        }
+
+        input {
+          height: 40px;
+        }
+
+        .error {
+          font-size: 1rem;
+        }
+      }
+
+      button {
+        font-size: $small_font;
+      }
+
+      .success {
+        font-size: 1rem;
+      }
+    }
   }
 }
 
 @keyframes word-bright {
-  0%,100%{
+  0%,
+  100% {
     filter: brightness(80%);
   }
-  
-  50%,75%{
+
+  50%,
+  75% {
     filter: brightness(200%);
   }
 }
