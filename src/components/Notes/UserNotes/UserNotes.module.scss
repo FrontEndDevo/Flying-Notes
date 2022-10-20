@@ -92,6 +92,24 @@
     }
   }
 
+  @include responsiveNote(tablet) {
+    .no-notes {
+      font-size: $large_font;
+    }
+
+    .all-notes {
+      width: 80vw;
+
+      input {
+        width: 100%;
+      }
+
+      ul {
+        gap: 2rem;
+      }
+    }
+  }
+
   @include responsiveNote(mobile) {
     .no-notes {
       font-size: $med_font;
