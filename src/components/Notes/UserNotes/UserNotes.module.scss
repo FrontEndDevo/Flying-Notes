@@ -1,4 +1,5 @@
 @use "../../../styles/vars" as *;
+@use "../../../styles/mixins" as *;
 
 .user-notes {
   display: flex;
@@ -88,6 +89,36 @@
       display: flex;
       flex-direction: column;
       gap: 3rem;
+    }
+  }
+
+  @include responsiveNote(mobile) {
+    .no-notes {
+      font-size: $med_font;
+    }
+
+    .all-notes {
+      width: 90vw;
+      input {
+        width: 80%;
+      }
+
+      h4 {
+        font-size: $small_font;
+        .number {
+          font-size: $med_font;
+        }
+      }
+
+      .total-button-box {
+        a {
+          font-size: $small_font;
+        }
+      }
+
+      ul {
+        gap: 2rem;
+      }
     }
   }
 }
