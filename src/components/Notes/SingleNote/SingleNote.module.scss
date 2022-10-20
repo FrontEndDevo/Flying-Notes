@@ -5,7 +5,7 @@
   max-width: 100%;
   background-color: $light_white;
   border-radius: $med_border_radius;
-  font-size: 1.5rem;
+  font-size: $med_font;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   .note-content {
     text-align: center;
@@ -89,7 +89,56 @@
       }
     }
   }
-  
+
+  @include responsiveNote(tablet) {
+    font-size: $med_font;
+
+    .note-tools {
+      .tools {
+        button {
+          font-size: 1rem;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .delete {
+        button {
+          font-size: 1rem;
+          margin: 0.5rem;
+        }
+      }
+    }
+  }
+
+  @include responsiveNote(mobile) {
+    font-size: $small_font;
+
+    .note-tools {
+      padding: 0.2rem;
+      .tools {
+        button {
+          padding: 0.5rem;
+          font-size: 1rem;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .delete {
+        button {
+          font-size: 1rem;
+          margin: 0.5rem;
+        }
+      }
+    }
+  }
 }
 
 @keyframes show-p {
