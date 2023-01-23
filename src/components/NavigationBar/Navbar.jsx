@@ -9,7 +9,7 @@ const Navbar = () => {
   const logoutHandler = () => {
     dispatch(AuthActions.logout());
     // Redirect user to login page.
-    history.replace("/Flying-Notes/authentication");
+    history.replace("/Flying-Notes/");
     // Remove this item from localStorage.
     localStorage.removeItem("isAuth");
   };
