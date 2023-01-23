@@ -126,7 +126,7 @@ const AddNote = () => {
         Add <span>a</span> new <span>note</span>
       </h2>
       {isFormShown && (
-        <form onSubmit={submitFormHandler}>
+        <form  onSubmit={submitFormHandler}>
           <div className={classes.note}>
             <label htmlFor="note-title">Note Title</label>
             <input
