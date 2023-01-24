@@ -1,10 +1,22 @@
 import { useState } from "react";
 import classes from "./SingleNote.module.scss";
-import editNote from "../../../assets/images/edit.png";
+
+import Lottie from "react-lottie";
+import * as bgColor from "../../../helpers/Animations/bgcolor.json";
 
 const SingleNote = (props) => {
   // A state to handle (confirm message) when delete a note.
   const [isHover, setIsHover] = useState(false);
+
+  // This variable belongs to (Lottie) animation
+  const bgcolorOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: bgColor,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   const enableHoverBtnHandler = () => {
     setIsHover(true);
@@ -28,10 +40,16 @@ const SingleNote = (props) => {
 
       <div className={classes["note-tools"]}>
         <div className={classes.tools}>
-          <button>
+          <Lottie
+            style={{ cursor: "pointer" }}
+            options={bgcolorOptions}
+            height={100}
+            width={100}
+          />
+          {/* <button>
             <img src={editNote} alt="edit-the-note" />
             Edit the note?
-          </button>
+          </button> */}
         </div>
 
         <div className={classes.delete}>
