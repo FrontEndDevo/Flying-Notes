@@ -22,7 +22,7 @@ const App = () => {
           </Route>
           <Route path="/Flying-Notes/authentication">
             <Auth />
-          </Route>
+          </Route>  
         </Switch>
       )}
       {isAuth && (
