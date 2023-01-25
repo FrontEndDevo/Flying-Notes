@@ -1,8 +1,27 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import classes from "./SingleNote.module.scss";
 
 import Lottie from "react-lottie";
 import * as bgColor from "../../../helpers/Animations/bgcolor.json";
+
+const colors = [
+  "#E94A35",
+  "#F59D00",
+  "#F5E100",
+  "#009755",
+  "#0073BF",
+  "#083D7A",
+  "#6EC4FD",
+  "#7935E9",
+  "#000000",
+  "#B58989",
+  "#B7B7B7",
+  "#D2B85C",
+  "#745029",
+  "#790000",
+  "#F26D7D",
+  "#6DF2B5",
+];
 
 const SingleNote = (props) => {
   // A state to handle (confirm message) when delete a note.
@@ -10,7 +29,7 @@ const SingleNote = (props) => {
 
   // This variable belongs to (Lottie) animation
   const bgcolorOptions = {
-    loop: false,
+    loop: true,
     autoplay: true,
     animationData: bgColor,
     rendererSettings: {
@@ -32,38 +51,42 @@ const SingleNote = (props) => {
   };
 
   return (
-    <li className={classes["single-note"]}>
-      <div className={classes["note-content"]}>
-        <h3>{props.title}</h3>
-        <p>{props.content}</p>
-      </div>
-
-      <div className={classes["note-tools"]}>
-        <div className={classes.tools}>
-          <Lottie
-            style={{ cursor: "pointer" }}
-            options={bgcolorOptions}
-            height={100}
-            width={100}
-          />
-          {/* <button>
-            <img src={editNote} alt="edit-the-note" />
-            Edit the note?
-          </button> */}
+    <div className={classes["the-note"]}>
+      <li className={classes["single-note"]}>
+        <div className={classes["note-content"]}>
+          <h3>{props.title}</h3>
+          <p>{props.content}</p>
         </div>
 
-        <div className={classes.delete}>
-          {isHover && <p>Double click to confirm deletion</p>}
-          <button
-            onMouseEnter={enableHoverBtnHandler}
-            onMouseLeave={disableHoverBtnHandler}
-            onDoubleClick={dblClickNoteHandler}
-          >
-            Delete Note
-          </button>
+        <div className={classes["note-tools"]}>
+          <div className={classes.tools}>
+            <div className={classes.lottie}>
+              <Lottie options={bgcolorOptions} height={100} width={100} />
+            </div>
+          </div>
+          <div className={classes.delete}>
+            {isHover && <p>Double click to confirm deletion</p>}
+            <button
+              onMouseEnter={enableHoverBtnHandler}
+              onMouseLeave={disableHoverBtnHandler}
+              onDoubleClick={dblClickNoteHandler}
+            >
+              Delete Note
+            </button>
+          </div>
         </div>
+      </li>
+      <div className={classes.droplist}>
+        <h3>Pick a note background-color</h3>
+        <ul>
+          <li>
+            <div
+              className={`${{ backgroundColor: "#E94A35" }} ${classes.color}`}
+            ></div>
+          </li>
+        </ul>
       </div>
-    </li>
+    </div>
   );
 };
 

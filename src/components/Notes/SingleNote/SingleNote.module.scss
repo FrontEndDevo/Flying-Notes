@@ -1,144 +1,150 @@
 @use "../../../styles/vars" as *;
 @use "../../../styles/mixins" as *;
 
-.single-note {
-  max-width: 100%;
-  background-color: $light_white;
-  border-radius: $med_border_radius;
-  font-size: $med_font;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  .note-content {
-    text-align: center;
-    padding: 1rem;
-
-    h3 {
-      text-decoration: wavy underline $dark_blue;
-    }
-
-    p {
-      text-align: start;
-      text-align: justify;
-      margin: 1rem 0;
-    }
-  }
-
-  .note-tools {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.the-note {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  .single-note {
+    max-width: 100%;
+    background-color: $light_white;
     border-radius: $med_border_radius;
-    border-top-left-radius: $small_border_radius;
-    border-top-right-radius: $small_border_radius;
-    padding: 0.2rem 1rem;
-    background-color: $dark_gray;
-    color: $light_white;
+    font-size: $med_font;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    position: relative;
+    .note-content {
+      text-align: center;
+      padding: 1rem;
 
-    .tools {
-      overflow: hidden;
-      button {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        border: 2px solid $dark_blue;
-        padding: 0.5rem 1rem;
-        border-radius: $med_border_radius;
-        background-color: transparent;
-        color: $light_white;
-        font-size: $small_font;
-        cursor: pointer;
-        transition: $fast_transition;
-
-        &:hover {
-          border-color: $dark_orange;
-          box-shadow: $dark_orange 4px 6px;
-        }
-
-        img {
-          width: 30px;
-          height: 30px;
-        }
-
-      }
-      
-    }
-
-    .delete {
-      position: relative;
-
-      button {
-        color: $light_white;
-        margin: 0.5rem 0;
-        padding: 0.3rem 1rem;
-        font-size: $small_font;
-        border: 2px solid $dark_red;
-        background-color: transparent;
-        border-radius: $small_border_radius;
-        cursor: pointer;
-        transition: $fast_transition;
-
-        &:hover {
-          background-color: $dark_red;
-        }
+      h3 {
+        text-decoration: wavy underline $dark_blue;
       }
 
       p {
-        width: 200%;
-        position: absolute;
-        top: -2rem;
-        right: -3rem;
-        font-size: 1rem;
-        color: $dark_blue;
-        animation: show-p $fast_transition linear;
+        text-align: start;
+        text-align: justify;
+        margin: 1rem 0;
       }
     }
-  }
-
-  @include responsiveNote(tablet) {
-    font-size: $med_font;
 
     .note-tools {
-      .tools {
-        button {
-          font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: $med_border_radius;
+      border-top-left-radius: $small_border_radius;
+      border-top-right-radius: $small_border_radius;
+      padding: 0.2rem 1rem;
+      background-color: $dark_gray;
+      color: $light_white;
 
-          img {
-            width: 20px;
-            height: 20px;
-          }
+      position: relative;
+      .tools {
+        .lottie {
+          position: absolute;
+          bottom: -1.2rem;
+          left: 0;
+          cursor: pointer;
         }
       }
 
       .delete {
+        position: relative;
+
         button {
+          color: $light_white;
+          margin: 0.5rem 0;
+          padding: 0.3rem 1rem;
+          font-size: $small_font;
+          border: 2px solid $dark_red;
+          background-color: transparent;
+          border-radius: $small_border_radius;
+          cursor: pointer;
+          transition: $fast_transition;
+
+          &:hover {
+            background-color: $dark_red;
+          }
+        }
+
+        p {
+          width: 200%;
+          position: absolute;
+          top: -2rem;
+          right: -3rem;
           font-size: 1rem;
-          margin: 0.5rem;
+          color: $dark_blue;
+          animation: show-p $fast_transition linear;
+        }
+      }
+    }
+
+    @include responsiveNote(tablet) {
+      font-size: $med_font;
+
+      .note-tools {
+        .tools {
+          button {
+            font-size: 1rem;
+
+            img {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        .delete {
+          button {
+            font-size: 1rem;
+            margin: 0.5rem;
+          }
+        }
+      }
+    }
+
+    @include responsiveNote(mobile) {
+      font-size: $small_font;
+
+      .note-tools {
+        padding: 0.2rem;
+        .tools {
+          button {
+            padding: 0.5rem;
+            font-size: 1rem;
+
+            img {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+
+        .delete {
+          button {
+            font-size: 1rem;
+            margin: 0.5rem;
+          }
         }
       }
     }
   }
 
-  @include responsiveNote(mobile) {
-    font-size: $small_font;
+  .droplist {
+    position: absolute;
+    left: -35%;
+    top: 0;
+    background-color: $dark;
+    h3 {
+      font-size: 1rem;
+      color: $light_white;
+      background-color: #292d43;
+      padding: 0.5rem;
+    }
+    li{
 
-    .note-tools {
-      padding: 0.2rem;
-      .tools {
-        button {
-          padding: 0.5rem;
-          font-size: 1rem;
 
-          img {
-            width: 20px;
-            height: 20px;
-          }
-        }
-      }
-
-      .delete {
-        button {
-          font-size: 1rem;
-          margin: 0.5rem;
-        }
+      .color{
+        
       }
     }
   }
