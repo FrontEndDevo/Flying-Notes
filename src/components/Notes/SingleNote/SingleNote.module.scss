@@ -77,7 +77,13 @@
     position: absolute;
     right: 99.7%;
     top: 0;
+    transform: rotate3d(1, 1, 1, 120deg);
+    transition: all $slow_transition;
+    &.animate-droplist {
+      transform: rotate3d(1, 1, 1, 720deg);
+    }
     h3 {
+      text-align: center;
       font-size: 1rem;
       color: $light_white;
       background-color: #292d43;

@@ -5,7 +5,6 @@ const ColorPicker = (props) => {
       style={{ backgroundColor: props.color }}
       className={styles["color-picker"]}
     >
-      <div className={styles.color}></div>
     </li>
   );
 };

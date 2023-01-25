@@ -27,6 +27,8 @@ const colors = [
 const SingleNote = (props) => {
   // A state to handle (confirm message) when delete a note.
   const [isHover, setIsHover] = useState(false);
+  // To show or hide the droplist of colors below (in JSX).
+  const [showDropList, setShowDropList] = useState(false);
 
   // This variable belongs to (Lottie) animation
   const bgcolorOptions = {
@@ -51,6 +53,11 @@ const SingleNote = (props) => {
     props.deleteNote(props.title);
   };
 
+  // Control showing & not showing the droplist of colors.
+  const showDropListHandler = () => {
+    setShowDropList((prevState) => !prevState);
+  };
+
   const colorsList = colors.map((color) => <ColorPicker color={color} />);
 
   return (
@@ -62,7 +69,7 @@ const SingleNote = (props) => {
 
       <div className={classes["note-tools"]}>
         <div className={classes.tools}>
-          <div className={classes.lottie}>
+          <div className={classes.lottie} onClick={showDropListHandler}>
             <Lottie options={bgcolorOptions} height={100} width={100} />
           </div>
         </div>
@@ -76,7 +83,11 @@ const SingleNote = (props) => {
             Delete Note
           </button>
         </div>
-        <div className={classes.droplist}>
+        <div
+          className={`${classes.droplist} ${
+            showDropList ? classes["animate-droplist"] : ""
+          }`}
+        >
           <h3>Pick a note background-color</h3>
           <ul className={classes.list}>{colorsList}</ul>
         </div>
