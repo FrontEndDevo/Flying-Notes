@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./SingleNote.module.scss";
+import ColorPicker from "../../ColorPicker/ColorPicker";
 
 import Lottie from "react-lottie";
 import * as bgColor from "../../../helpers/Animations/bgcolor.json";
@@ -50,43 +51,37 @@ const SingleNote = (props) => {
     props.deleteNote(props.title);
   };
 
-  return (
-    <div className={classes["the-note"]}>
-      <li className={classes["single-note"]}>
-        <div className={classes["note-content"]}>
-          <h3>{props.title}</h3>
-          <p>{props.content}</p>
-        </div>
+  const colorsList = colors.map((color) => <ColorPicker color={color} />);
 
-        <div className={classes["note-tools"]}>
-          <div className={classes.tools}>
-            <div className={classes.lottie}>
-              <Lottie options={bgcolorOptions} height={100} width={100} />
-            </div>
-          </div>
-          <div className={classes.delete}>
-            {isHover && <p>Double click to confirm deletion</p>}
-            <button
-              onMouseEnter={enableHoverBtnHandler}
-              onMouseLeave={disableHoverBtnHandler}
-              onDoubleClick={dblClickNoteHandler}
-            >
-              Delete Note
-            </button>
+  return (
+    <li className={classes["single-note"]}>
+      <div className={classes["note-content"]}>
+        <h3>{props.title}</h3>
+        <p>{props.content}</p>
+      </div>
+
+      <div className={classes["note-tools"]}>
+        <div className={classes.tools}>
+          <div className={classes.lottie}>
+            <Lottie options={bgcolorOptions} height={100} width={100} />
           </div>
         </div>
-      </li>
-      <div className={classes.droplist}>
-        <h3>Pick a note background-color</h3>
-        <ul>
-          <li>
-            <div
-              className={`${{ backgroundColor: "#E94A35" }} ${classes.color}`}
-            ></div>
-          </li>
-        </ul>
+        <div className={classes.delete}>
+          {isHover && <p>Double click to confirm deletion</p>}
+          <button
+            onMouseEnter={enableHoverBtnHandler}
+            onMouseLeave={disableHoverBtnHandler}
+            onDoubleClick={dblClickNoteHandler}
+          >
+            Delete Note
+          </button>
+        </div>
+        <div className={classes.droplist}>
+          <h3>Pick a note background-color</h3>
+          <ul className={classes.list}>{colorsList}</ul>
+        </div>
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -125,7 +125,7 @@ const UserNotes = () => {
             </h4>
             <Link to="/Flying-Notes/add-new-note">Add another one?</Link>
           </div>
-          <ul>{renderedNotes}</ul>
+          <ul className={classes['rendering-notes']}>{renderedNotes}</ul>
         </div>
       )}
     </div>

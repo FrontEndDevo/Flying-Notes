@@ -1,9 +1,10 @@
-@use "../../../styles/vars" as *;
-@use "../../../styles/mixins" as *;
+@use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 
-.color-picker{
-
-  .color{
-    
+.color-picker {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  .color {
   }
 }
