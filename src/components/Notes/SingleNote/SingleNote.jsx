@@ -25,6 +25,8 @@ const colors = [
   "#000000",
 ];
 
+let angle = 320;
+
 const SingleNote = (props) => {
   // A state to handle (confirm message) when delete a note.
   const [isHover, setIsHover] = useState(false);
@@ -78,7 +80,7 @@ const SingleNote = (props) => {
   ));
 
   const textColors = colors.map((textColor) => (
-    <TextPicker textColor={textColor} />
+    <TextPicker textColor={textColor} angle={(angle -= 20)} />
   ));
 
   return (
@@ -107,7 +109,12 @@ const SingleNote = (props) => {
         </div>
         <div className={classes["text-picker"]}>
           <ul className={classes["text-colors"]}>
-            <li className={classes["pick-one"]}>Pick One!</li>
+            <li
+              style={{ transform: `rotate(${angle - 20}deg)` }}
+              className={classes["pick-one"]}
+            >
+              Pick One!
+            </li>
             {textColors}
           </ul>
         </div>

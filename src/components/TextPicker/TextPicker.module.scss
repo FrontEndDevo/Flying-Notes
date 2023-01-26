@@ -1,10 +1,16 @@
 @use "../../styles/vars" as *;
 @use "../../styles/mixins" as *;
 
-.text-picker{
+.text-picker {
   height: 3rem;
   width: 16rem;
   border-radius: 0.5rem;
   position: absolute;
   transform-origin: left center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 1s;
 }

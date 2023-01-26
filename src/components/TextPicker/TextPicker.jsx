@@ -2,10 +2,15 @@ import styles from "./TextPicker.module.scss";
 const TextPicker = (props) => {
   return (
     <li
-      style={{ backgroundColor: props.textColor }}
+      style={{
+        backgroundColor: props.textColor,
+        transform: `rotate(${props.angle}deg)`,
+      }}
       className={styles["text-picker"]}
       // onClick={textColorHandler}
-    ></li>
+    >
+      {props.textColor}
+    </li>
   );
 };
 

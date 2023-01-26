@@ -77,7 +77,7 @@
 
       .text-colors {
         position: relative;
-
+        cursor: crosshair;
         .pick-one {
           background-color: $light_white;
           color: #000;
@@ -90,6 +90,7 @@
           position: absolute;
           z-index: 100;
           transform-origin: left center;
+          transition: all 1s;
 
           &::before {
             content: "";
