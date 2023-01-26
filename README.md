@@ -32,10 +32,13 @@ Application snapshots (without pseudo classes)
 
 ![8](https://user-images.githubusercontent.com/98362185/196167782-6ece65a1-20c7-46a2-87a8-9753fe9bbb42.png)
 
-![9](https://user-images.githubusercontent.com/98362185/196167854-07060748-f0e7-423d-8705-d2399f5fddb4.png)
-
 ![screencapture-localhost-3000-Flying-Notes-my-notes-2023-01-26-23_44_27](https://user-images.githubusercontent.com/98362185/214957732-9569cf75-e6b1-4e9b-895b-b5b78f8ccfd7.png)
 ![screencapture-localhost-3000-Flying-Notes-my-notes-2023-01-26-23_45_32](https://user-images.githubusercontent.com/98362185/214957744-d1537e64-895a-410d-8c27-f3bb5023ebf5.png)
+
+![9](https://user-images.githubusercontent.com/98362185/196167854-07060748-f0e7-423d-8705-d2399f5fddb4.png)
+
+
+
 
 
 Here is the planning and analysis phase, which is before the implementation phase, and of course we are missing the maintenance phase, I am working on it in parallel with the rest of my projects on GitHub here.
