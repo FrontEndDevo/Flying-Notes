@@ -4,6 +4,7 @@ import ColorPicker from "../../ColorPicker/ColorPicker";
 
 import Lottie from "react-lottie";
 import * as bgColor from "../../../helpers/Animations/bgcolor.json";
+import TextPicker from "../../TextPicker/TextPicker";
 
 const colors = [
   "#f2f6fa",
@@ -76,6 +77,10 @@ const SingleNote = (props) => {
     <ColorPicker key={index} color={color} backgroundColor={changeBG} />
   ));
 
+  const textColors = colors.map((textColor) => (
+    <TextPicker textColor={textColor} />
+  ));
+
   return (
     <li
       style={{ backgroundColor: backgroundColor }}
@@ -92,6 +97,20 @@ const SingleNote = (props) => {
             <Lottie options={bgcolorOptions} height={100} width={100} />
           </div>
         </div>
+        <div
+          className={`${classes.droplist} ${
+            showDropList ? classes["animate-droplist"] : ""
+          }`}
+        >
+          <h3>Pick a note background-color</h3>
+          <ul className={classes.list}>{colorsList}</ul>
+        </div>
+        <div className={classes["text-picker"]}>
+          <ul className={classes["text-colors"]}>
+            <li className={classes["pick-one"]}>Pick One!</li>
+            {textColors}
+          </ul>
+        </div>
         <div className={classes.delete}>
           {isHover && <p>Double click to confirm deletion</p>}
           <button
@@ -101,14 +120,6 @@ const SingleNote = (props) => {
           >
             Delete Note
           </button>
-        </div>
-        <div
-          className={`${classes.droplist} ${
-            showDropList ? classes["animate-droplist"] : ""
-          }`}
-        >
-          <h3>Pick a note background-color</h3>
-          <ul className={classes.list}>{colorsList}</ul>
         </div>
       </div>
     </li>

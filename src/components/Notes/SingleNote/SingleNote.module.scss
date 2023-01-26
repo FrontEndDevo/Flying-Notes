@@ -42,6 +42,70 @@
       }
     }
 
+    .droplist {
+      position: absolute;
+      right: 99.7%;
+      top: 0;
+      transform: rotate3d(1, 1, 1, 120deg);
+      transition: all $slow_transition;
+      &.animate-droplist {
+        transform: rotate3d(1, 1, 1, 720deg);
+      }
+      h3 {
+        text-align: center;
+        font-size: 1rem;
+        color: $light_white;
+        background-color: #292d43;
+        padding: 0.5rem;
+      }
+      .list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+        justify-items: center;
+        background-color: #31364e;
+      }
+    }
+
+    .text-picker {
+      // position: absolute;
+      // left: calc(100% / 3);
+      margin-right: 10rem;
+      margin-bottom: 3rem;
+
+      .text-colors {
+        position: relative;
+
+        .pick-one {
+          background-color: $light_white;
+          color: #000;
+          font-weight: bold;
+          border-radius: 0.5rem;
+          padding: 5px;
+          text-align: center;
+          height: 3rem;
+          width: 16rem;
+          position: absolute;
+          z-index: 100;
+          transform-origin: left center;
+
+          &::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: $dark;
+            border: 3px solid $dark_blue;
+            position: absolute;
+            left: 5%;
+            top: 30%;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+
     .delete {
       position: relative;
 
@@ -70,33 +134,6 @@
         color: $dark_blue;
         animation: show-p $fast_transition linear;
       }
-    }
-  }
-
-  .droplist {
-    position: absolute;
-    right: 99.7%;
-    top: 0;
-    transform: rotate3d(1, 1, 1, 120deg);
-    transition: all $slow_transition;
-    &.animate-droplist {
-      transform: rotate3d(1, 1, 1, 720deg);
-    }
-    h3 {
-      text-align: center;
-      font-size: 1rem;
-      color: $light_white;
-      background-color: #292d43;
-      padding: 0.5rem;
-    }
-    .list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 1rem;
-      padding: 1rem;
-      justify-items: center;
-      background-color: #31364e;
     }
   }
 

@@ -2,6 +2,9 @@
 @use "../../styles/mixins" as *;
 
 .text-picker{
-
-  
+  height: 3rem;
+  width: 16rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  transform-origin: left center;
 }
