@@ -65,6 +65,13 @@ const SingleNote = (props) => {
     setBackgroundColor(chossenColor);
   };
 
+  // Get selected text to change its color:
+  const textMouseUpHandler = (e) => {
+    if (window.getSelection().toString()) {
+      console.log(window.getSelection().toString());
+    }
+  };
+
   const colorsList = colors.map((color, index) => (
     <ColorPicker key={index} color={color} backgroundColor={changeBG} />
   ));
@@ -74,7 +81,7 @@ const SingleNote = (props) => {
       style={{ backgroundColor: backgroundColor }}
       className={classes["single-note"]}
     >
-      <div className={classes["note-content"]}>
+      <div onMouseUp={textMouseUpHandler} className={classes["note-content"]}>
         <h3>{props.title}</h3>
         <p>{props.content}</p>
       </div>
