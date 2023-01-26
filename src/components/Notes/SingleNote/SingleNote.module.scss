@@ -78,6 +78,7 @@
       .text-colors {
         position: relative;
         cursor: crosshair;
+        z-index: 1000;
         .pick-one {
           background-color: $light_white;
           color: #000;

@@ -1,5 +1,8 @@
 import styles from "./TextPicker.module.scss";
 const TextPicker = (props) => {
+  const textColorHandler = () => {
+    props.getTextColor(props.textColor);
+  };
   return (
     <li
       style={{
@@ -7,7 +10,7 @@ const TextPicker = (props) => {
         transform: `rotate(${props.angle}deg)`,
       }}
       className={styles["text-picker"]}
-      // onClick={textColorHandler}
+      onClick={textColorHandler}
     >
       {props.textColor}
     </li>

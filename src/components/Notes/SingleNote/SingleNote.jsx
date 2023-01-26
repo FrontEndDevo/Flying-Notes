@@ -8,7 +8,6 @@ import TextPicker from "../../TextPicker/TextPicker";
 
 const colors = [
   "#f2f6fa",
-  "#E94A35",
   "#F59D00",
   "#F5E100",
   "#009755",
@@ -23,9 +22,8 @@ const colors = [
   "#F26D7D",
   "#6DF2B5",
   "#000000",
+  "#E94A35",
 ];
-
-let angle = 320;
 
 const SingleNote = (props) => {
   // A state to handle (confirm message) when delete a note.
@@ -34,6 +32,10 @@ const SingleNote = (props) => {
   const [showDropList, setShowDropList] = useState(false);
   // This state to change background-color of note.
   const [backgroundColor, setBackgroundColor] = useState("#f2f6fa"); // light white
+  // This state to change text-color of selected text in a note.
+  const [textColor, setTextColor] = useState("#000000"); // black
+
+  const [rotateList, setRotateList] = useState(false);
 
   // This variable belongs to (Lottie) animation
   const bgcolorOptions = {
@@ -66,21 +68,43 @@ const SingleNote = (props) => {
   // This func. to assign clicked color by user to the BG of note.
   const changeBG = (chossenColor) => {
     setBackgroundColor(chossenColor);
+    setShowDropList((prevState) => !prevState);
+
+  };
+  // This func. to assign clicked color by user to the text-color of note.
+  const changeTextColor = (textColor) => {
+    setTextColor(textColor);
+    setRotateList((prev) => !prev);
   };
 
+  /* This was a try to change selected text by user to a specific color also chossen by user.
+  Unfortunately, I did not succeed in doing this despite a lot of searching */
+  //const textMouseUpHandler = (e) => {
   // Get selected text to change its color:
-  const textMouseUpHandler = (e) => {
-    if (window.getSelection().toString()) {
-      console.log(window.getSelection().toString());
-    }
+  //   if (window.getSelection().toString()) {
+  //     console.log(window.getSelection().toString());
+  //   }
+  // };
+
+  // This angle to rotate every single li when click (Pick One!) li in JSX.
+  let angle = 320;
+
+  // Open & Close the "Colors Circle" as I call it.
+  const rotateListsHandler = (_) => {
+    setRotateList((prev) => !prev);
   };
 
   const colorsList = colors.map((color, index) => (
     <ColorPicker key={index} color={color} backgroundColor={changeBG} />
   ));
 
-  const textColors = colors.map((textColor) => (
-    <TextPicker textColor={textColor} angle={(angle -= 20)} />
+  const textColors = colors.map((textColor, index) => (
+    <TextPicker
+      key={index}
+      textColor={textColor}
+      angle={rotateList ? (angle -= 20) : 0}
+      getTextColor={changeTextColor}
+    />
   ));
 
   return (
@@ -88,7 +112,7 @@ const SingleNote = (props) => {
       style={{ backgroundColor: backgroundColor }}
       className={classes["single-note"]}
     >
-      <div onMouseUp={textMouseUpHandler} className={classes["note-content"]}>
+      <div style={{ color: textColor }} className={classes["note-content"]}>
         <h3>{props.title}</h3>
         <p>{props.content}</p>
       </div>
@@ -110,8 +134,9 @@ const SingleNote = (props) => {
         <div className={classes["text-picker"]}>
           <ul className={classes["text-colors"]}>
             <li
-              style={{ transform: `rotate(${angle - 20}deg)` }}
+              style={{ transform: `rotate(${rotateList ? 340 : 0}deg)` }}
               className={classes["pick-one"]}
+              onClick={rotateListsHandler}
             >
               Pick One!
             </li>
