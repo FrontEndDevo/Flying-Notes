@@ -48,6 +48,7 @@
       top: 0;
       transform: rotate3d(1, 1, 1, 120deg);
       transition: all $slow_transition;
+      z-index: 11;
       &.animate-droplist {
         transform: rotate3d(1, 1, 1, 720deg);
       }
@@ -185,6 +186,11 @@
           font-size: 1rem;
           margin: 0.5rem;
         }
+      }
+
+      .droplist {
+        right: 0;
+        top: 0;
       }
     }
   }
