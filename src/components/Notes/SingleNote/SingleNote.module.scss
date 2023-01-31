@@ -79,7 +79,7 @@
       .text-colors {
         position: relative;
         cursor: crosshair;
-        z-index: 1000;
+        z-index: 100;
         .pick-one {
           background-color: $light_white;
           color: #000;
@@ -191,6 +191,27 @@
       .droplist {
         right: 0;
         top: 0;
+      }
+
+      .text-picker {
+        margin: 0;
+
+        .text-colors {
+          position: absolute;
+          bottom: calc(100% + 2rem);
+          left: calc(100% - 7rem);
+          .pick-one {
+            height: 2rem;
+            width: 7rem;
+            border-top-right-radius: 0;
+            &::before {
+              width: 3px;
+              height: 3px;
+              top: 35%;
+              left: 3%;
+            }
+          }
+        }
       }
     }
   }

@@ -13,4 +13,10 @@
   justify-content: center;
   cursor: pointer;
   transition: all 1s;
+
+  @include responsiveNote(mobile) {
+    height: 2rem;
+    width: 7rem;
+    border-top-right-radius: 0;
+  }
 }

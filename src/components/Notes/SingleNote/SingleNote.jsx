@@ -69,7 +69,6 @@ const SingleNote = (props) => {
   const changeBG = (chossenColor) => {
     setBackgroundColor(chossenColor);
     setShowDropList((prevState) => !prevState);
-
   };
   // This func. to assign clicked color by user to the text-color of note.
   const changeTextColor = (textColor) => {
@@ -131,18 +130,20 @@ const SingleNote = (props) => {
           <h3>Pick a note background-color</h3>
           <ul className={classes.list}>{colorsList}</ul>
         </div>
-        <div className={classes["text-picker"]}>
-          <ul className={classes["text-colors"]}>
-            <li
-              style={{ transform: `rotate(${rotateList ? 340 : 0}deg)` }}
-              className={classes["pick-one"]}
-              onClick={rotateListsHandler}
-            >
-              Pick One!
-            </li>
-            {textColors}
-          </ul>
-        </div>
+        {!isHover && (
+          <div className={classes["text-picker"]}>
+            <ul className={classes["text-colors"]}>
+              <li
+                style={{ transform: `rotate(${rotateList ? 340 : 0}deg)` }}
+                className={classes["pick-one"]}
+                onClick={rotateListsHandler}
+              >
+                Pick One!
+              </li>
+              {textColors}
+            </ul>
+          </div>
+        )}
         <div className={classes.delete}>
           {isHover && <p>Double click to confirm deletion</p>}
           <button
