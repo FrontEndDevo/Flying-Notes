@@ -105,8 +105,8 @@ const AddNote = () => {
       // Store background-color & text color in localstorage:
       const storedNote = {
         ...note,
-        bgColor: "white", // initial value
-        textColor: "black", // initial value
+        bgColor: "#f2f6fa", // initial value (Light White)
+        textColor: "#000000", // initial value (Black)
       };
       window.localStorage.setItem(note.id, JSON.stringify(storedNote));
     }

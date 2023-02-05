@@ -31,9 +31,9 @@ const SingleNote = (props) => {
   // To show or hide the droplist of colors below (in JSX).
   const [showDropList, setShowDropList] = useState(false);
   // This state to change background-color of note.
-  const [backgroundColor, setBackgroundColor] = useState("#f2f6fa"); // light white
+  const [backgroundColor, setBackgroundColor] = useState("#f2f6fa"); // Light White
   // This state to change text-color of selected text in a note.
-  const [textColor, setTextColor] = useState("#000000"); // black
+  const [textColor, setTextColor] = useState("#000000"); // Black
 
   const [rotateList, setRotateList] = useState(false);
 
@@ -69,11 +69,21 @@ const SingleNote = (props) => {
   const changeBG = (chossenColor) => {
     setBackgroundColor(chossenColor);
     setShowDropList((prevState) => !prevState);
+
+    // Set the new BG color in localStorage:
+    const currentNote = localStorage.getItem(props.title);
+    const newNote = { ...JSON.parse(currentNote), bgColor: chossenColor };
+    localStorage.setItem(newNote.id, JSON.stringify(newNote));
   };
   // This func. to assign clicked color by user to the text-color of note.
   const changeTextColor = (textColor) => {
     setTextColor(textColor);
     setRotateList((prev) => !prev);
+
+    // Set the new text color in localStorage:
+    const currentNote = localStorage.getItem(props.title);
+    const newNote = { ...JSON.parse(currentNote), textColor };
+    localStorage.setItem(newNote.id, JSON.stringify(newNote));
   };
 
   /* This was a try to change selected text by user to a specific color also chossen by user.
