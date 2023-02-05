@@ -70,6 +70,21 @@
           outline: none;
           box-shadow: $med_teal 0px 4px 4px, $med_teal 0px 4px 4px;
         }
+
+        // Customize textarea scrollbar
+        &::-webkit-scrollbar {
+          width: 1rem;
+          &-track {
+            border-radius: 10px;
+            background: transparent;
+          }
+
+          &-thumb {
+            background-color: #fbab7e;
+            background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+            border-radius: 10px;
+          }
+        }
       }
 
       input {
