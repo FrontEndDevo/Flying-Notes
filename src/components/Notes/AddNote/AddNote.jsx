@@ -135,7 +135,10 @@ const AddNote = () => {
     finalMessage = <p className={classes.error}>{error}</p>;
 
   return (
-    <div className={classes["add-new-note"]}>
+    <div
+      style={{ height: `${isFormShown ? "100%" : "100vh"}` }}
+      className={classes["add-new-note"]}
+    >
       <h2 onClick={showFormHandler}>
         Add <span>a</span> new <span>note</span>
       </h2>
