@@ -49,6 +49,8 @@ const AddNote = () => {
   // Handling send notes to database errors.
   const [error, setError] = useState(null);
 
+  const [titleLength, setTitleLength] = useState(50);
+
   // useReducer to handle input values.
   const [notes, dispatch] = useReducer(noteReducer, initialState);
 
@@ -60,6 +62,7 @@ const AddNote = () => {
   // Input values
   const changeNoteTitleHandler = (event) => {
     setIsNoteAdded(false);
+    setTitleLength(50 - event.target.value.length);
     dispatch({ type: "TITLE", value: event.target.value });
     dispatch({ type: "TITLE_EMPTY", value: false });
   };
@@ -141,10 +144,12 @@ const AddNote = () => {
               value={notes.titleInput}
               type="text"
               name="title"
+              maxLength="50"
               id="note-title"
               placeholder="Enter the note title"
               onChange={changeNoteTitleHandler}
             />
+            <p className={classes["title-length"]}>({titleLength})</p>
             {titleError}
           </div>
           <div className={classes.note}>

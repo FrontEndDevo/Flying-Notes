@@ -36,7 +36,7 @@
   form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
     width: 50vw;
     border: 5px solid $dark_blue;
     border-radius: $large_border_radius;
@@ -46,6 +46,7 @@
       display: flex;
       flex-direction: column;
       text-align: center;
+      position: relative;
 
       label {
         color: $dark_blue;
@@ -80,7 +81,18 @@
         resize: none;
       }
 
+      .title-length {
+        position: absolute;
+        bottom: 0;
+        right: 1rem;
+        font-size: 1.8rem;
+        color: white;
+      }
+
       .error {
+        position: absolute;
+        top: 100%;
+        transform: translateX(12rem);
         margin-top: 0.5rem;
         font-size: 1.3rem;
         color: $dark_red;
