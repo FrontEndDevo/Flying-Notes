@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./SingleNote.module.scss";
 import ColorPicker from "../../ColorPicker/ColorPicker";
 
@@ -46,6 +46,16 @@ const SingleNote = (props) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
+  useEffect(() => {
+    // Check if the note was stored in localStorage and get its (BG & textColor):
+    if (localStorage.getItem(props.title)) {
+      const existingNote = localStorage.getItem(props.title);
+      const noteObj = JSON.parse(existingNote);
+      setTextColor(noteObj.textColor);
+      setBackgroundColor(noteObj.bgColor);
+    }
+  }, [props]);
 
   const enableHoverBtnHandler = () => {
     setIsHover(true);
