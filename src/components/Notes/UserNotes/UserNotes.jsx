@@ -57,7 +57,10 @@ const UserNotes = () => {
       (deletedNote) => deletedNote.title !== id
     );
 
-    /* Second step:delete from database by sending a new notes array 
+    // Second step: delete from localStorage:
+    window.localStorage.removeItem(id);
+
+    /* Last step:delete from database by sending a new notes array 
     but with method:'PUT',
     to replace the current notes array in database by the new one here */
     sendNotesToFirebase(theRestOfTheNotes, "PUT");
@@ -125,7 +128,7 @@ const UserNotes = () => {
             </h4>
             <Link to="/Flying-Notes/add-new-note">Add another one?</Link>
           </div>
-          <ul className={classes['rendering-notes']}>{renderedNotes}</ul>
+          <ul className={classes["rendering-notes"]}>{renderedNotes}</ul>
         </div>
       )}
     </div>

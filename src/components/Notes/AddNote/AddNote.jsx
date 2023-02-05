@@ -101,6 +101,14 @@ const AddNote = () => {
       sendNotesToFirebase(note, "POST").catch((error) => {
         setError(error);
       });
+
+      // Store background-color & text color in localstorage:
+      const storedNote = {
+        ...note,
+        bgColor: "white", // initial value
+        textColor: "black", // initial value
+      };
+      window.localStorage.setItem(note.id, JSON.stringify(storedNote));
     }
   };
 
@@ -126,7 +134,7 @@ const AddNote = () => {
         Add <span>a</span> new <span>note</span>
       </h2>
       {isFormShown && (
-        <form  onSubmit={submitFormHandler}>
+        <form onSubmit={submitFormHandler}>
           <div className={classes.note}>
             <label htmlFor="note-title">Note Title</label>
             <input
