@@ -81,7 +81,7 @@
         resize: none;
       }
 
-      .title-length {
+      .word-length {
         position: absolute;
         bottom: 0;
         right: 1rem;
@@ -92,7 +92,7 @@
       .error {
         position: absolute;
         top: 100%;
-        transform: translateX(12rem);
+        transform: translateX(20rem);
         margin-top: 0.5rem;
         font-size: 1.3rem;
         color: $dark_red;
