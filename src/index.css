@@ -12,6 +12,18 @@ body {
   background-color: #e6e7ef;
 }
 
+body::-webkit-scrollbar {
+  width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #5e35b1;
+}
+
 ul {
   list-style: none;
 }
